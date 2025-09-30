@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Digital Learning Platform for Rural School Students in Nabha - Free educational videos, e-books, and study materials">
+    <meta name="keywords" content="education, rural learning, Nabha, Punjab, digital learning, free education, videos, library">
+    <meta name="author" content="Nabha Learning Platform">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Nabha Learning Platform - Education for All">
+    <meta property="og:description" content="Empowering rural students with quality education. Access free video lessons, e-books, and study materials anytime, anywhere.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nabhalearn.org">
+    <meta property="og:image" content="/og-image.png">
+    <meta property="og:site_name" content="Nabha Learning Platform">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Nabha Learning Platform - Education for All">
+    <meta name="twitter:description" content="Free digital education platform for rural students in Nabha, Punjab">
+    <meta name="twitter:image" content="/twitter-card.png">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#2563eb">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Nabha Learn">
+    <meta name="application-name" content="Nabha Learn">
+    <meta name="msapplication-TileColor" content="#2563eb">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#2563eb">
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://www.youtube-nocookie.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="//www.youtube.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    
+    <title>Nabha Learning Platform - Education for All</title>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
+    
+    <!-- Critical CSS (inlined for performance) -->
+    <script>
+        // Simple theme initialization
+        const theme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+    </script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="toast.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "Nabha Digital Learning Platform",
+      "description": "Digital Learning Platform for Rural School Students in Nabha",
+      "url": "https://nabhalearn.org",
+      "logo": "https://nabhalearn.org/logo.png",
+      "sameAs": [
+        "https://facebook.com/nabhalearn",
+        "https://youtube.com/nabhalearn",
+        "https://instagram.com/nabhalearn"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Nabha",
+        "addressRegion": "Punjab",
+        "addressCountry": "IN"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+    </script>
+    
+    <style>
+        /* ===== GLOBAL STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #10b981;
+            --accent-color: #f59e0b;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --white: #ffffff;
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        /* ===== NAVIGATION BAR ===== */
+        .navbar {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .logo i {
+            font-size: 1.8rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--primary-color);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-dark);
+            transition: 0.3s;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        /* ===== CONTAINER & SECTIONS ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        /* ===== QUICK LINKS (HOME PAGE) ===== */
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .link-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .link-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .link-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .link-card p {
+            color: var(--text-light);
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            line-height: 1.8;
+        }
+
+        .about-content h3 {
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .feature-item i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* ===== VIDEOS PAGE ===== */
+        .filter-section {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.5rem;
+            background-color: var(--bg-light);
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .video-card {
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .video-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-3px);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background-color: #e5e7eb;
+            position: relative;
+        }
+
+        .video-thumbnail iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-info {
+            padding: 1rem;
+        }
+
+        .video-category {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .video-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .video-description {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* ===== LIBRARY PAGE ===== */
+        .library-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .book-card {
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .book-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-3px);
+        }
+
+        .book-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .book-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .book-meta {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .download-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-weight: 600;
+        }
+
+        .download-btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        /* ===== CONTACT PAGE ===== */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .error-message {
+            color: #ef4444;
+            font-size: 0.85rem;
+            margin-top: 0.3rem;
+            display: none;
+        }
+
+        .contact-info {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-top: 0.2rem;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--text-dark);
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Placeholder sections for future features */
+        .future-feature {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 2rem 0;
+            color: var(--white);
+        }
+
+        .future-feature i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: var(--white);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: var(--shadow);
+                padding: 2rem 0;
+                gap: 1rem;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .nav-container {
+                padding: 1rem;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+        }
+
+        /* Basic page visibility - detailed styles in external CSS */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Offline indicator -->
+    <div class="offline-indicator" id="offlineIndicator">
+        <i class="fas fa-wifi"></i>
+        You are currently offline. Some features may be limited.
+    </div>
+    <!-- ===== NAVIGATION BAR ===== -->
+    <header>
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
+            <div class="nav-container">
+                <a href="#home" class="logo" data-page="home" aria-label="Nabha Learn - Go to homepage">
+                    <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                    <span>Nabha Learn</span>
+                </a>
+                
+                <ul class="nav-menu" id="navMenu" role="menubar" aria-hidden="false">
+                    <li role="none"><a href="#home" data-page="home" role="menuitem" aria-current="page">Home</a></li>
+                    <li role="none"><a href="#about" data-page="about" role="menuitem">About Us</a></li>
+                    <li role="none"><a href="#videos" data-page="videos" role="menuitem">Videos</a></li>
+                    <li role="none"><a href="#library" data-page="library" role="menuitem">Library</a></li>
+                    <li role="none"><a href="#contact" data-page="contact" role="menuitem">Contact</a></li>
+                </ul>
+                
+                <div class="nav-controls">
+                    <button 
+                        class="theme-toggle" 
+                        id="themeToggle" 
+                        type="button"
+                        aria-label="Toggle dark mode"
+                        aria-pressed="false"
+                        title="Toggle dark mode">
+                        <i class="fas fa-moon" aria-hidden="true"></i>
+                    </button>
+                    
+                    <button 
+                        class="menu-toggle" 
+                        id="menuToggle"
+                        type="button"
+                        aria-label="Toggle navigation menu"
+                        aria-expanded="false"
+                        aria-controls="navMenu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main id="main-content">
+        <!-- ===== HOME PAGE ===== -->
+        <div id="home" class="page active" role="main" aria-label="Home page">
+            <!-- Hero Section -->
+            <section class="hero" aria-labelledby="heroTitle">
+                <div class="hero-content">
+                    <h1 id="heroTitle">
+                        <i class="fas fa-book-reader" aria-hidden="true"></i> 
+                        Welcome to Nabha Digital Learning
+                    </h1>
+                    <p>Empowering rural students with quality education. Access free video lessons, e-books, and study materials anytime, anywhere.</p>
+                    
+                    <!-- Enhanced Search -->
+                    <div class="hero-search">
+                        <div class="search-container">
+                            <i class="fas fa-search search-icon" aria-hidden="true"></i>
+                            <input 
+                                type="search" 
+                                class="search-input" 
+                                id="searchInput"
+                                placeholder="Search videos, books, or topics..." 
+                                aria-label="Search content"
+                                autocomplete="off"
+                                inputmode="search">
+                            <button 
+                                class="search-btn" 
+                                type="button"
+                                aria-label="Search">
+                                <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div class="search-results-count" id="searchResultsCount" aria-live="polite"></div>
+                    </div>
+                    
+                    <div class="hero-buttons">
+                        <a href="#videos" class="btn btn-primary" data-page="videos">
+                            <i class="fas fa-play-circle" aria-hidden="true"></i> Watch Videos
+                        </a>
+                        <a href="#library" class="btn btn-secondary" data-page="library">
+                            <i class="fas fa-book" aria-hidden="true"></i> Browse Library
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Links Section -->
+            <section class="container" aria-labelledby="quickLinksTitle">
+                <h2 id="quickLinksTitle" class="section-title">Start Learning Today</h2>
+                <div class="quick-links grid grid-auto-fit">
+                    <a href="#videos" class="link-card card" data-page="videos" aria-describedby="videoDesc">
+                        <div class="card-content">
+                            <i class="fas fa-video" aria-hidden="true"></i>
+                            <h3>Video Lessons</h3>
+                            <p id="videoDesc">Watch educational videos across Math, Science, English, and General Knowledge</p>
+                        </div>
+                    </a>
+                    <a href="#library" class="link-card card" data-page="library" aria-describedby="libraryDesc">
+                        <div class="card-content">
+                            <i class="fas fa-book-open" aria-hidden="true"></i>
+                            <h3>Digital Library</h3>
+                            <p id="libraryDesc">Download PDFs, notes, and e-books for offline study</p>
+                        </div>
+                    </a>
+                    <a href="#contact" class="link-card card" data-page="contact" aria-describedby="contactDesc">
+                        <div class="card-content">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            <h3>Get in Touch</h3>
+                            <p id="contactDesc">Have questions? Contact us for support and guidance</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Placeholder: Future Features -->
+                <div class="future-feature" role="region" aria-labelledby="feature1Title">
+                    <i class="fas fa-language" aria-hidden="true"></i>
+                    <h3 id="feature1Title">Coming Soon: Regional Language Support</h3>
+                    <p>Switch between Hindi and Punjabi for better understanding</p>
+                </div>
+
+                <div class="future-feature" role="region" aria-labelledby="feature2Title">
+                    <i class="fas fa-download" aria-hidden="true"></i>
+                    <h3 id="feature2Title">Coming Soon: Offline Mode</h3>
+                    <p>Download videos and notes for offline learning</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- ===== ABOUT US PAGE ===== -->
+        <div id="about" class="page" role="main" aria-label="About us page" aria-hidden="true">
+            <section class="container" aria-labelledby="aboutTitle">
+                <h1 id="aboutTitle" class="section-title">About Our Platform</h1>
+            <div class="about-content">
+                <p>Nabha Digital Learning Platform is dedicated to bridging the educational gap for rural school students in Nabha and surrounding areas. We believe that every child deserves access to quality education, regardless of their geographical location or economic background.</p>
+                
+                <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+                <p>To provide free, accessible, and high-quality educational resources to students in rural areas, helping them compete on equal footing with their urban counterparts and achieve their academic dreams.</p>
+                
+                <h3><i class="fas fa-eye"></i> Our Vision</h3>
+                <p>To become the most trusted digital learning companion for rural students across Punjab, empowering them with knowledge, skills, and confidence to succeed in their academic journey.</p>
+                
+                <h3><i class="fas fa-star"></i> What We Offer</h3>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <i class="fas fa-video"></i>
+                        <h4>Video Lessons</h4>
+                        <p>Curated educational videos in multiple subjects</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-file-pdf"></i>
+                        <h4>Study Materials</h4>
+                        <p>Downloadable PDFs and notes for all classes</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h4>Mobile Friendly</h4>
+                        <p>Optimized for low-bandwidth rural internet</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <h4>Completely Free</h4>
+                        <p>No hidden costs, accessible to everyone</p>
+                    </div>
+                </div>
+
+                <h3><i class="fas fa-users" aria-hidden="true"></i> Who We Serve</h3>
+                <p>Our platform is designed specifically for school students in rural Nabha, from Class 1 to Class 12. We focus on core subjects including Mathematics, Science, English, and General Knowledge, aligned with the curriculum followed in government and private schools.</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- ===== VIDEOS PAGE ===== -->
+        <div id="videos" class="page" role="main" aria-label="Videos page" aria-hidden="true">
+            <section class="container" aria-labelledby="videosTitle">
+                <h1 id="videosTitle" class="section-title">Educational Videos</h1>
+                <p class="section-subtitle">Watch free video lessons across different subjects and classes</p>
+
+                <!-- Filter Section -->
+                <div class="filter-section card" role="region" aria-labelledby="filterTitle">
+                    <h2 id="filterTitle" class="sr-only">Filter videos by subject</h2>
+                    <h3 style="text-align: center; margin-bottom: 1rem;">Filter by Subject</h3>
+                    <div class="filter-buttons" role="group" aria-label="Subject filters">
+                        <button 
+                            class="filter-btn active" 
+                            data-filter="all"
+                            type="button"
+                            aria-pressed="true">
+                            All Videos
+                        </button>
+                        <button 
+                            class="filter-btn" 
+                            data-filter="math"
+                            type="button"
+                            aria-pressed="false">
+                            Mathematics
+                        </button>
+                        <button 
+                            class="filter-btn" 
+                            data-filter="science"
+                            type="button"
+                            aria-pressed="false">
+                            Science
+                        </button>
+                        <button 
+                            class="filter-btn" 
+                            data-filter="english"
+                            type="button"
+                            aria-pressed="false">
+                            English
+                        </button>
+                        <button 
+                            class="filter-btn" 
+                            data-filter="gk"
+                            type="button"
+                            aria-pressed="false">
+                            General Knowledge
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Video Grid -->
+                <div class="video-grid grid grid-auto-fill" id="videoGrid" role="region" aria-label="Video lessons">
+                    <!-- Math Videos -->
+                    <article class="video-card card" data-category="math">
+                        <div class="video-thumbnail" data-src="https://www.youtube-nocookie.com/embed/1WPDgDgncNg">
+                            <div class="video-placeholder">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
+                            <div class="video-duration">12:35</div>
+                        </div>
+                        <button 
+                            class="save-btn" 
+                            data-save-id="video-algebra-1"
+                            data-save-type="video"
+                            data-save-title="Introduction to Algebra"
+                            type="button"
+                            aria-label="Save for later">
+                            <i class="far fa-bookmark"></i>
+                        </button>
+                        <div class="video-info card-content">
+                            <span class="video-category">Mathematics</span>
+                            <h3 class="video-title">Introduction to Algebra</h3>
+                            <p class="video-description">Learn the basics of algebraic expressions and equations for Class 8-10</p>
+                        </div>
+                    </article>
+
+                    <article class="video-card card" data-category="math">
+                        <div class="video-thumbnail" data-src="https://www.youtube-nocookie.com/embed/sxnX5_LbBDU">
+                            <div class="video-placeholder">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
+                            <div class="video-duration">15:42</div>
+                        </div>
+                        <button 
+                            class="save-btn" 
+                            data-save-id="video-geometry-1"
+                            data-save-type="video"
+                            data-save-title="Geometry Fundamentals"
+                            type="button"
+                            aria-label="Save for later">
+                            <i class="far fa-bookmark"></i>
+                        </button>
+                        <div class="video-info card-content">
+                            <span class="video-category">Mathematics</span>
+                            <h3 class="video-title">Geometry Fundamentals</h3>
+                            <p class="video-description">Understanding shapes, angles, and geometric principles</p>
+                        </div>
+                    </article>
+
+                    <!-- Science Videos -->
+                    <article class="video-card card" data-category="science">
+                        <div class="video-thumbnail" data-src="https://www.youtube-nocookie.com/embed/Qw4vFdRB6LI">
+                            <div class="video-placeholder">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
+                            <div class="video-duration">8:27</div>
+                        </div>
+                        <button 
+                            class="save-btn" 
+                            data-save-id="video-photosynthesis-1"
+                            data-save-type="video"
+                            data-save-title="Photosynthesis Explained"
+                            type="button"
+                            aria-label="Save for later">
+                            <i class="far fa-bookmark"></i>
+                        </button>
+                        <div class="video-info card-content">
+                            <span class="video-category">Science</span>
+                            <h3 class="video-title">Photosynthesis Explained</h3>
+                            <p class="video-description">How plants make their own food - Biology for Class 6-8</p>
+                        </div>
+                    </article>
+
+                <div class="video-card" data-category="science">
+                    <div class="video-thumbnail">
+                        <iframe src="https://www.youtube.com/embed/pS-l0gLrMvs" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <span class="video-category">Science</span>
+                        <h3 class="video-title">Newton's Laws of Motion</h3>
+                        <p class="video-description">Understanding force, mass, and acceleration in Physics</p>
+                    </div>
+                </div>
+
+                <!-- English Videos -->
+                <div class="video-card" data-category="english">
+                    <div class="video-thumbnail">
+                        <iframe src="https://www.youtube.com/embed/EwIvN5dxW5g" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <span class="video-category">English</span>
+                        <h3 class="video-title">English Grammar Basics</h3>
+                        <p class="video-description">Learn parts of speech, tenses, and sentence structure</p>
+                    </div>
+                </div>
+
+                <div class="video-card" data-category="english">
+                    <div class="video-thumbnail">
+                        <iframe src="https://www.youtube.com/embed/xBNpicyCGr0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <span class="video-category">English</span>
+                        <h3 class="video-title">Reading Comprehension</h3>
+                        <p class="video-description">Improve your reading skills and understanding</p>
+                    </div>
+                </div>
+
+                <!-- General Knowledge Videos -->
+                <div class="video-card" data-category="gk">
+                    <div class="video-thumbnail">
+                        <iframe src="https://www.youtube.com/embed/ZnEPmSc4c7w" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <span class="video-category">General Knowledge</span>
+                        <h3 class="video-title">Indian History Overview</h3>
+                        <p class="video-description">Key events and personalities in Indian history</p>
+                    </div>
+                </div>
+
+                <div class="video-card" data-category="gk">
+                    <div class="video-thumbnail">
+                        <iframe src="https://www.youtube.com/embed/HCDVN7DCzYE" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <span class="video-category">General Knowledge</span>
+                        <h3 class="video-title">World Geography</h3>
+                        <p class="video-description">Learn about continents, countries, and capitals</p>
+                    </div>
+                </div>
+            </div>
+
+                <!-- Placeholder for Interactive Quizzes -->
+                <div class="future-feature" style="margin-top: 3rem;" role="region" aria-labelledby="quizFeatureTitle">
+                    <i class="fas fa-question-circle" aria-hidden="true"></i>
+                    <h3 id="quizFeatureTitle">Coming Soon: Interactive Quizzes</h3>
+                    <p>Test your knowledge after watching videos with fun quizzes</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- ===== LIBRARY PAGE ===== -->
+        <div id="library" class="page" role="main" aria-label="Library page" aria-hidden="true">
+            <section class="container" aria-labelledby="libraryTitle">
+                <h1 id="libraryTitle" class="section-title">Digital Library</h1>
+                <p class="section-subtitle">Download free study materials, notes, and e-books</p>
+
+                <div class="library-grid grid grid-auto-fill" role="region" aria-label="Study materials">
+                    <!-- Math Resources -->
+                    <article class="book-card card">
+                        <div class="card-content">
+                            <div class="book-icon">
+                                <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="book-title">Class 10 Math Formula Sheet</h3>
+                            <div class="book-meta">
+                                <span class="book-tag">Mathematics</span>
+                                <span class="book-tag">Class 10</span>
+                                <span class="book-tag">2.5 MB</span>
+                            </div>
+                            <p class="file-size">Estimated download time: 30 seconds on 3G</p>
+                            <button 
+                                class="download-btn btn-accent" 
+                                data-filename="math-formula-class10.pdf"
+                                type="button"
+                                aria-describedby="mathFormulaDesc">
+                                <i class="fas fa-download" aria-hidden="true"></i> Download PDF
+                            </button>
+                            <div class="download-progress">
+                                <div class="download-progress-bar"></div>
+                            </div>
+                            <p class="sr-only" id="mathFormulaDesc">Download Class 10 Mathematics formula sheet PDF</p>
+                        </div>
+                    </article>
+
+                    <article class="book-card card">
+                        <div class="card-content">
+                            <div class="book-icon">
+                                <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="book-title">Algebra Practice Questions</h3>
+                            <div class="book-meta">
+                                <span class="book-tag">Mathematics</span>
+                                <span class="book-tag">Class 8-10</span>
+                                <span class="book-tag">3.1 MB</span>
+                            </div>
+                            <p class="file-size">Estimated download time: 45 seconds on 3G</p>
+                            <button 
+                                class="download-btn btn-accent" 
+                                data-filename="algebra-practice.pdf"
+                                type="button"
+                                aria-describedby="algebraPracticeDesc">
+                                <i class="fas fa-download" aria-hidden="true"></i> Download PDF
+                            </button>
+                            <div class="download-progress">
+                                <div class="download-progress-bar"></div>
+                            </div>
+                            <p class="sr-only" id="algebraPracticeDesc">Download Algebra practice questions PDF</p>
+                        </div>
+                    </article>
+
+                <!-- Science Resources -->
+                <div class="book-card">
+                    <div class="book-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3 class="book-title">Biology Notes - Human Body</h3>
+                    <p class="book-meta">Subject: Science | Class: 9-10 | Size: 4.2 MB</p>
+                    <button class="download-btn" onclick="downloadFile('biology-human-body.pdf')">
+                        <i class="fas fa-download"></i> Download PDF
+                    </button>
+                </div>
+
+                <div class="book-card">
+                    <div class="book-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3 class="book-title">Physics - Laws of Motion</h3>
+                    <p class="book-meta">Subject: Science | Class: 9-11 | Size: 3.8 MB</p>
+                    <button class="download-btn" onclick="downloadFile('physics-motion.pdf')">
+                        <i class="fas fa-download"></i> Download PDF
+                    </button>
+                </div>
+
+                <!-- English Resources -->
+                <div class="book-card">
+                    <div class="book-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3 class="book-title">English Grammar Guide</h3>
+                    <p class="book-meta">Subject: English | Class: 6-10 | Size: 2.9 MB</p>
+                    <button class="download-btn" onclick="downloadFile('english-grammar.pdf')">
+                        <i class="fas fa-download"></i> Download PDF
+                    </button>
+                </div>
+
+                <div class="book-card">
+                    <div class="book-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3 class="book-title">Essay Writing Handbook</h3>
+                    <p class="book-meta">Subject: English | Class: 8-12 | Size: 1.8 MB</p>
+                    <button class="download-btn" onclick="downloadFile('essay-writing.pdf')">
+                        <i class="fas fa-download"></i> Download PDF
+                    </button>
+                </div>
+
+                <!-- General Knowledge Resources -->
+                <div class="book-card">
+                    <div class="book-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3 class="book-title">Indian History Timeline</h3>
+                    <p class="book-meta">Subject: GK | Class: 8-12 | Size: 5.2 MB</p>
+                    <button class="download-btn" onclick="downloadFile('indian-history.pdf')">
+                        <i class="fas fa-download"></i> Download PDF
+                    </button>
+                </div>
+
+                <div class="book-card">
+                    <div class="book-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3 class="book-title">World Geography Atlas</h3>
+                    <p class="book-meta">Subject: GK | Class: 6-10 | Size: 6.5 MB</p>
+                    <button class="download-btn" onclick="downloadFile('world-geography.pdf')">
+                        <i class="fas fa-download"></i> Download PDF
+                    </button>
+                </div>
+
+                <!-- Additional Study Materials -->
+                <div class="book-card">
+                    <div class="book-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3 class="book-title">NCERT Solutions Class 10</h3>
+                    <p class="book-meta">Subject: All Subjects | Class: 10 | Size: 8.4 MB</p>
+                    <button class="download-btn" onclick="downloadFile('ncert-solutions-10.pdf')">
+                        <i class="fas fa-download"></i> Download PDF
+                    </button>
+                </div>
+            </div>
+
+            <!-- Placeholder: Offline Download Feature -->
+            <div class="future-feature" style="margin-top: 3rem;">
+                <i class="fas fa-cloud-download-alt"></i>
+                <h3>Coming Soon: Bulk Download for Offline Access</h3>
+                <p>Download entire subject packages for studying without internet</p>
+            </div>
+        </div>
+    </div>
+
+        <!-- ===== CONTACT PAGE ===== -->
+        <div id="contact" class="page" role="main" aria-label="Contact page" aria-hidden="true">
+            <section class="container" aria-labelledby="contactTitle">
+                <h1 id="contactTitle" class="section-title">Contact Us</h1>
+                <p class="section-subtitle">Have questions or suggestions? We'd love to hear from you!</p>
+
+                <div class="contact-container grid" style="grid-template-columns: 1fr 1fr; gap: 3rem;">
+                    <!-- Contact Form -->
+                    <div class="contact-form card">
+                        <div class="card-content">
+                            <h2 style="margin-bottom: 1rem;">
+                                <i class="fas fa-paper-plane" aria-hidden="true"></i> 
+                                Send us a Message
+                            </h2>
+                            <form id="contactForm" novalidate>
+                                <div class="form-group">
+                                    <label for="name">Full Name</label>
+                                    <input 
+                                        type="text" 
+                                        id="name" 
+                                        name="name" 
+                                        required
+                                        autocomplete="name"
+                                        aria-describedby="nameError"
+                                        minlength="2">
+                                    <div class="error-message" id="nameError" role="alert" aria-live="polite"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input 
+                                        type="email" 
+                                        id="email" 
+                                        name="email" 
+                                        required
+                                        autocomplete="email"
+                                        inputmode="email"
+                                        aria-describedby="emailError">
+                                    <div class="error-message" id="emailError" role="alert" aria-live="polite"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="subject">Subject</label>
+                                    <input 
+                                        type="text" 
+                                        id="subject" 
+                                        name="subject" 
+                                        placeholder="What is this regarding?"
+                                        autocomplete="off">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="message">Message</label>
+                                    <textarea 
+                                        id="message" 
+                                        name="message" 
+                                        required
+                                        minlength="10"
+                                        rows="5"
+                                        aria-describedby="messageError"
+                                        placeholder="Please describe your question or feedback..."></textarea>
+                                    <div class="error-message" id="messageError" role="alert" aria-live="polite"></div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary" style="width: 100%;" aria-describedby="submitHelp">
+                                    <i class="fas fa-paper-plane" aria-hidden="true"></i> 
+                                    <span>Send Message</span>
+                                </button>
+                                <p class="sr-only" id="submitHelp">This form will be validated before submission</p>
+                            </form>
+                        </div>
+                    </div>
+
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <h3 style="margin-bottom: 1rem;"><i class="fas fa-info-circle"></i> Get in Touch</h3>
+                    <p style="margin-bottom: 2rem; color: var(--text-light);">Feel free to reach out to us through any of the following channels. We typically respond within 24-48 hours.</p>
+
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Nabha, Punjab, India</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>support@nabhalearn.org</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+91-XXXX-XXXXXX</p>
+                            <small style="color: var(--text-light);">Monday - Saturday, 9 AM - 6 PM</small>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Support Hours</h4>
+                            <p>9:00 AM - 6:00 PM (IST)</p>
+                            <small style="color: var(--text-light);">Monday through Saturday</small>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid #e5e7eb;">
+                        <h4 style="margin-bottom: 1rem;">Follow Us</h4>
+                        <div style="display: flex; gap: 1rem; font-size: 1.5rem;">
+                            <a href="#" style="color: var(--primary-color);"><i class="fab fa-facebook"></i></a>
+                            <a href="#" style="color: var(--primary-color);"><i class="fab fa-youtube"></i></a>
+                            <a href="#" style="color: var(--primary-color);"><i class="fab fa-instagram"></i></a>
+                            <a href="#" style="color: var(--primary-color);"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer role="contentinfo">
+        <div class="footer-content">
+            <div style="margin-bottom: 1rem;">
+                <h2 style="margin-bottom: 0.5rem;">
+                    <i class="fas fa-graduation-cap" aria-hidden="true"></i> 
+                    Nabha Digital Learning
+                </h2>
+                <p>Empowering Rural Education, One Student at a Time</p>
+            </div>
+            <p style="margin-top: 1rem; opacity: 0.8;">
+                &copy; 2024 Nabha Learning Platform. All rights reserved. | 
+                Made with <i class="fas fa-heart" style="color: #ef4444;" aria-label="love"></i> for students
+            </p>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script src="simple-script.js" defer></script>
+</body>
+</html>
