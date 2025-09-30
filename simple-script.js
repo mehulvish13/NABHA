@@ -10,12 +10,14 @@ class NabhaApp {
   init() {
     this.setupEventListeners();
     this.applyTheme();
-    console.log('✅ Nabha Platform Ready');
   }
 
   setupEventListeners() {
     // Theme toggle
-    document.getElementById('themeToggle')?.addEventListener('click', () => this.toggleTheme());
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => this.toggleTheme());
+    }
     
     // Mobile menu
     document.getElementById('menuToggle')?.addEventListener('click', () => this.toggleMobileMenu());
@@ -42,10 +44,23 @@ class NabhaApp {
   }
 
   applyTheme() {
+    // Set data attribute
     document.documentElement.setAttribute('data-theme', this.theme);
+    
+    // Update body classes for additional styling hooks
+    document.body.classList.remove('theme-light', 'theme-dark');
+    document.body.classList.add(`theme-${this.theme}`);
+    
+    // Update icon
     const icon = document.querySelector('#themeToggle i');
     if (icon) {
       icon.className = this.theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+    }
+    
+    // Update button aria-pressed state
+    const toggle = document.getElementById('themeToggle');
+    if (toggle) {
+      toggle.setAttribute('aria-pressed', this.theme === 'dark' ? 'true' : 'false');
     }
   }
 
@@ -121,7 +136,6 @@ class NabhaApp {
   // ===== DOWNLOADS =====
   downloadFile(filename) {
     this.showToast(`Download started: ${filename}`, 'info');
-    console.log('Download:', filename);
   }
 
   // ===== FORM HANDLING =====
