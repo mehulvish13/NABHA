@@ -34,7 +34,7 @@ class NabhaApp {
       });
     }
 
-    // Video placeholders
+    // Video placeholders (lazy load)
     document.addEventListener('click', (e) => {
       const videoPlaceholder = e.target.closest('.video-placeholder');
       if (videoPlaceholder) this.loadVideo(videoPlaceholder);
@@ -58,11 +58,9 @@ class NabhaApp {
     if (contactForm) {
       contactForm.addEventListener('submit', (e) => this.handleContactForm(e));
     }
+    // (save buttons removed from UI)
   }
 
-
-
-  // ===== NAVIGATION =====
   navigateToPage(pageId) {
     // Hide all pages
     document.querySelectorAll('.page').forEach(page => {

@@ -38,32 +38,14 @@ Nabha Learning Platform is a **free, open-source educational website** designed 
 
 ---
 
-## ✨ Features
+## ✨ Features (Simplified)
 
-### 🎨 User Interface
-- ✅ **Light & Dark Mode** - Toggle between themes with one click
-- ✅ **Responsive Design** - Works perfectly on phones, tablets, and desktops
-- ✅ **Smooth Animations** - Professional transitions and effects
-- ✅ **Clean Layout** - Easy navigation for all age groups
+- Clean, responsive UI focused on accessibility and performance
+- Single-page layout with client-side navigation, search, and filters
+- Video library and downloadable PDFs (static files)
+- Lightweight notification toasts
 
-### 📚 Educational Content
-- ✅ **Video Library** - Curated educational videos by subject
-- ✅ **Digital Library** - Downloadable PDF study materials
-- ✅ **Subject Filters** - Math, Science, English, General Knowledge
-- ✅ **Search Function** - Find content quickly
-
-### 🚀 Advanced Features
-- ✅ **Save for Later** - Bookmark favorite videos and books
-- ✅ **Download Progress** - Visual feedback for downloads
-- ✅ **Lazy Loading** - Videos load only when needed
-- ✅ **Scroll to Top** - Quick navigation button
-- ✅ **Contact Form** - Get in touch easily
-
-### ♿ Accessibility
-- ✅ **Screen Reader Support** - ARIA labels throughout
-- ✅ **Keyboard Navigation** - Use Tab, Enter, and arrow keys
-- ✅ **High Contrast** - Readable in all lighting conditions
-- ✅ **Focus Indicators** - Clear visual feedback
+Note: The codebase has been simplified to remove optional features (dark-mode toggle, save/bookmark persistence) to make deployment easier and reduce maintenance overhead.
 
 ---
 
@@ -136,10 +118,10 @@ NABHA/
 
 | File | Purpose | Lines |
 |------|---------|-------|
-| `index.html` | Complete website structure | ~1400 |
-| `styles.css` | Design system + all styling | ~1000 |
-| `simple-script.js` | Interactive features | ~350 |
-| `toast.css` | Notification system | ~150 |
+| `index.html` | Complete website structure (cleaned) | ~800 |
+| `styles.css` | Core styling (cleaned & minimal) | ~700 |
+| `simple-script.js` | Client-side navigation & features | ~250 |
+| `toast.css` | Notification styles (minimal) | ~30 |
 
 ---
 
@@ -323,6 +305,15 @@ In `index.html`, find the video section and add:
 - **Comments**: Descriptive section headers
 
 ---
+
+## ✅ Changelog (cleanup)
+
+- Removed the dark-mode toggle and persistent theme code to simplify the UI and CSS.
+- Moved inline styles into `styles.css` and removed stray tags from `index.html`.
+- Removed save/bookmark persistence and related JavaScript to reduce complexity.
+- Simplified `toast.css` and aligned it with the main styling variables.
+- Ensured `simple-script.js` passes syntax check and only contains handlers used by the current UI.
+
 
 ## 🤝 Contributing
 

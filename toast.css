@@ -26,3 +26,8 @@
   border: none;
   cursor: pointer;
 }
+
+/* simple variants */
+.toast-success { border-left: 4px solid var(--secondary-color); }
+.toast-error { border-left: 4px solid #ef4444; }
+.toast-info { border-left: 4px solid var(--primary-color); }

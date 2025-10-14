@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="toast.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    </style>
+    <title>Nabha Learning Platform</title>
 </head>
 <body>
     <!-- Skip to content link for accessibility -->
@@ -207,7 +207,7 @@
                 <!-- Filter Section -->
                 <div class="filter-section card" role="region" aria-labelledby="filterTitle">
                     <h2 id="filterTitle" class="sr-only">Filter videos by subject</h2>
-                    <h3 style="text-align: center; margin-bottom: 1rem;">Filter by Subject</h3>
+                    <h3 class="filter-heading">Filter by Subject</h3>
                     <div class="filter-buttons" role="group" aria-label="Subject filters">
                         <button 
                             class="filter-btn active" 
@@ -379,7 +379,7 @@
             </div>
 
                 <!-- Placeholder for Interactive Quizzes -->
-                <div class="future-feature" style="margin-top: 3rem;" role="region" aria-labelledby="quizFeatureTitle">
+                <div class="future-feature" role="region" aria-labelledby="quizFeatureTitle">
                     <i class="fas fa-question-circle" aria-hidden="true"></i>
                     <h3 id="quizFeatureTitle">Coming Soon: Interactive Quizzes</h3>
                     <p>Test your knowledge after watching videos with fun quizzes</p>
@@ -649,11 +649,11 @@
                 <h1 id="contactTitle" class="section-title">Contact Us</h1>
                 <p class="section-subtitle">Have questions or suggestions? We'd love to hear from you!</p>
 
-                <div class="contact-container grid" style="grid-template-columns: 1fr 1fr; gap: 3rem;">
+                <div class="contact-container grid">
                     <!-- Contact Form -->
                     <div class="contact-form card">
                         <div class="card-content">
-                            <h2 style="margin-bottom: 1rem;">
+                            <h2>
                                 <i class="fas fa-paper-plane" aria-hidden="true"></i> 
                                 Send us a Message
                             </h2>
@@ -718,8 +718,8 @@
 
                 <!-- Contact Information -->
                 <div class="contact-info">
-                    <h3 style="margin-bottom: 1rem;"><i class="fas fa-info-circle"></i> Get in Touch</h3>
-                    <p style="margin-bottom: 2rem; color: var(--text-light);">Feel free to reach out to us through any of the following channels. We typically respond within 24-48 hours.</p>
+                    <h3><i class="fas fa-info-circle"></i> Get in Touch</h3>
+                    <p class="muted">Feel free to reach out to us through any of the following channels. We typically respond within 24-48 hours.</p>
 
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
@@ -755,13 +755,13 @@
                         </div>
                     </div>
 
-                    <div style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid #e5e7eb;">
-                        <h4 style="margin-bottom: 1rem;">Follow Us</h4>
-                        <div style="display: flex; gap: 1rem; font-size: 1.5rem;">
-                            <a href="#" style="color: var(--primary-color);"><i class="fab fa-facebook"></i></a>
-                            <a href="#" style="color: var(--primary-color);"><i class="fab fa-youtube"></i></a>
-                            <a href="#" style="color: var(--primary-color);"><i class="fab fa-instagram"></i></a>
-                            <a href="#" style="color: var(--primary-color);"><i class="fab fa-twitter"></i></a>
+                    <div class="follow-us">
+                        <h4>Follow Us</h4>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
                         </div>
                     </div>
                 </div>
@@ -773,19 +773,18 @@
 
     <!-- ===== FOOTER ===== -->
     <footer role="contentinfo">
-        <div class="footer-content">
-            <div style="margin-bottom: 1rem;">
-                <h2 style="margin-bottom: 0.5rem;">
-                    <i class="fas fa-graduation-cap" aria-hidden="true"></i> 
-                    Nabha Digital Learning
-                </h2>
-                <p>Empowering Rural Education, One Student at a Time</p>
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h2>
+                        <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                        Nabha Digital Learning
+                    </h2>
+                    <p>Empowering Rural Education, One Student at a Time</p>
+                </div>
+                <p class="footer-note">
+                    &copy; 2024 Nabha Learning Platform. All rights reserved. | Made with <i class="fas fa-heart" aria-label="love"></i>
+                </p>
             </div>
-            <p style="margin-top: 1rem; opacity: 0.8;">
-                &copy; 2024 Nabha Learning Platform. All rights reserved. | 
-                Made with <i class="fas fa-heart" style="color: #ef4444;" aria-label="love"></i> for students
-            </p>
-        </div>
     </footer>
 
     <!-- ===== JAVASCRIPT ===== -->
