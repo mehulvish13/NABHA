@@ -4,330 +4,792 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Digital Learning Platform for Rural School Students in Nabha - Free educational videos, e-books, and study materials">
-    <meta name="keywords" content="education, rural learning, Nabha, Punjab, digital learning, free education, videos, library">
-    <meta name="author" content="Nabha Learning Platform">
-    <meta name="robots" content="index, follow">
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Nabha Learning Platform - Education for All">
-    <meta property="og:description" content="Empowering rural students with quality education. Access free video lessons, e-books, and study materials anytime, anywhere.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://nabhalearn.org">
-    <meta property="og:site_name" content="Nabha Learning Platform">
-    
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <!-- External CSS -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" 
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" 
-          integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" 
-          crossorigin="anonymous">
     <title>Nabha Learning Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --secondary: #10b981;
+            --accent: #f59e0b;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --white: #ffffff;
+            --gray: #6b7280;
+            --border: #e5e7eb;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: var(--light);
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+            background: rgba(37, 99, 235, 0.1);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--dark);
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        /* Search Bar */
+        .search-box {
+            max-width: 600px;
+            margin: 2rem auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 3rem 1rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+            background: var(--white);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary);
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            color: var(--white);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .search-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 2rem;
+            border: none;
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        .btn-accent:hover {
+            background: #d97706;
+            transform: translateY(-2px);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            font-weight: 800;
+            color: var(--dark);
+        }
+
+        /* Cards */
+        .card {
+            background: var(--white);
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: all 0.3s;
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        /* Quick Links */
+        .quick-links .card {
+            text-align: center;
+            padding: 2rem;
+            cursor: pointer;
+        }
+
+        .quick-links i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .quick-links h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .quick-links p {
+            color: var(--gray);
+        }
+
+        /* Video Cards */
+        .video-card {
+            position: relative;
+        }
+
+        .video-thumbnail {
+            position: relative;
+            padding-top: 56.25%;
+            background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
+            cursor: pointer;
+        }
+
+        .video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+            transition: all 0.3s;
+        }
+
+        .video-placeholder:hover {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.2) 0%, rgba(16, 185, 129, 0.2) 100%);
+        }
+
+        .video-placeholder i {
+            font-size: 3rem;
+            color: var(--primary);
+            transition: all 0.3s;
+        }
+
+        .video-placeholder:hover i {
+            transform: scale(1.2);
+        }
+
+        .video-thumbnail iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-info {
+            padding: 1.5rem;
+        }
+
+        .video-category {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .video-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .video-description {
+            color: var(--gray);
+            font-size: 0.875rem;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--border);
+            background: var(--white);
+            border-radius: 2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        /* Book Cards */
+        .book-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .book-card {
+            text-align: center;
+        }
+
+        .book-card .card-content {
+            padding: 2rem;
+        }
+
+        .book-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .book-meta {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .book-tag {
+            padding: 0.25rem 0.75rem;
+            background: var(--light);
+            color: var(--gray);
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+        }
+
+        .file-size {
+            color: var(--gray);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Form */
+        .contact-grid {
+            display: grid;
+            gap: 3rem;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem;
+            border: 2px solid var(--border);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-top: 0.25rem;
+        }
+
+        .contact-item h4 {
+            margin-bottom: 0.25rem;
+            color: var(--dark);
+        }
+
+        .contact-item p {
+            color: var(--gray);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-brand h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-brand p {
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+
+        /* Page Management */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Toast Notifications */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--white);
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            z-index: 2000;
+            animation: slideIn 0.3s;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .toast-success {
+            border-left: 4px solid var(--secondary);
+        }
+
+        .toast-error {
+            border-left: 4px solid #ef4444;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: var(--white);
+                width: 100%;
+                padding: 2rem;
+                box-shadow: var(--shadow-lg);
+                transition: left 0.3s;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero {
+                padding: 3rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-buttons {
+                flex-direction: column;
+            }
+
+            .filter-btn {
+                width: 100%;
+            }
+        }
+
+        /* Loading Animation */
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid transparent;
+            border-top-color: currentColor;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+            margin-left: 0.5rem;
+        }
+    </style>
 </head>
 <body>
-    <!-- Skip to content link for accessibility -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-    
-    <!-- Offline indicator -->
-    <div class="offline-indicator" id="offlineIndicator">
-        <i class="fas fa-wifi"></i>
-        You are currently offline. Some features may be limited.
-    </div>
-    <!-- ===== NAVIGATION BAR ===== -->
-    <header>
-        <nav class="navbar" role="navigation" aria-label="Main navigation">
-            <div class="nav-container">
-                <a href="#home" class="logo" data-page="home" aria-label="Nabha Learn - Go to homepage">
-                    <i class="fas fa-graduation-cap" aria-hidden="true"></i>
-                    <span>Nabha Learn</span>
-                </a>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a class="logo" onclick="app.navigate('home')">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Nabha Learn</span>
+            </a>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a class="nav-link active" onclick="app.navigate('home')">Home</a></li>
+                <li><a class="nav-link" onclick="app.navigate('about')">About</a></li>
+                <li><a class="nav-link" onclick="app.navigate('videos')">Videos</a></li>
+                <li><a class="nav-link" onclick="app.navigate('library')">Library</a></li>
+                <li><a class="nav-link" onclick="app.navigate('contact')">Contact</a></li>
+            </ul>
+            
+            <button class="menu-toggle" id="menuToggle" onclick="app.toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <section class="hero">
+            <div class="hero-content">
+                <h1><i class="fas fa-book-reader"></i> Welcome to Nabha Digital Learning</h1>
+                <p>Empowering rural students with quality education. Access free video lessons, e-books, and study materials anytime, anywhere.</p>
                 
-                <ul class="nav-menu" id="navMenu" role="menubar" aria-hidden="false">
-                    <li role="none"><a href="#home" data-page="home" role="menuitem" aria-current="page">Home</a></li>
-                    <li role="none"><a href="#about" data-page="about" role="menuitem">About Us</a></li>
-                    <li role="none"><a href="#videos" data-page="videos" role="menuitem">Videos</a></li>
-                    <li role="none"><a href="#library" data-page="library" role="menuitem">Library</a></li>
-                    <li role="none"><a href="#contact" data-page="contact" role="menuitem">Contact</a></li>
-                </ul>
+                <div class="search-box">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="search" class="search-input" id="searchInput" placeholder="Search videos, books, or topics..." oninput="app.search(this.value)">
+                    <button class="search-btn"><i class="fas fa-arrow-right"></i></button>
+                </div>
                 
-                <div class="nav-controls">
-                    <button 
-                        class="menu-toggle" 
-                        id="menuToggle"
-                        type="button"
-                        aria-label="Toggle navigation menu"
-                        aria-expanded="false"
-                        aria-controls="navMenu">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
+                <div class="hero-buttons">
+                    <a class="btn btn-primary" onclick="app.navigate('videos')">
+                        <i class="fas fa-play-circle"></i> Watch Videos
+                    </a>
+                    <a class="btn btn-secondary" onclick="app.navigate('library')">
+                        <i class="fas fa-book"></i> Browse Library
+                    </a>
                 </div>
             </div>
-        </nav>
-    </header>
+        </section>
 
-    <!-- ===== MAIN CONTENT ===== -->
-    <main id="main-content">
-        <!-- ===== HOME PAGE ===== -->
-        <div id="home" class="page active" role="main" aria-label="Home page">
-            <!-- Hero Section -->
-            <section class="hero" aria-labelledby="heroTitle">
-                <div class="hero-content">
-                    <h1 id="heroTitle">
-                        <i class="fas fa-book-reader" aria-hidden="true"></i> 
-                        Welcome to Nabha Digital Learning
-                    </h1>
-                    <p>Empowering rural students with quality education. Access free video lessons, e-books, and study materials anytime, anywhere.</p>
-                    
-                    <!-- Enhanced Search -->
-                    <div class="hero-search">
-                        <div class="search-container">
-                            <i class="fas fa-search search-icon" aria-hidden="true"></i>
-                            <input 
-                                type="search" 
-                                class="search-input" 
-                                id="searchInput"
-                                placeholder="Search videos, books, or topics..." 
-                                aria-label="Search content"
-                                autocomplete="off"
-                                inputmode="search">
-                            <button 
-                                class="search-btn" 
-                                type="button"
-                                aria-label="Search">
-                                <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                        <div class="search-results-count" id="searchResultsCount" aria-live="polite"></div>
-                    </div>
-                    
-                    <div class="hero-buttons">
-                        <a href="#videos" class="btn btn-primary" data-page="videos">
-                            <i class="fas fa-play-circle" aria-hidden="true"></i> Watch Videos
-                        </a>
-                        <a href="#library" class="btn btn-secondary" data-page="library">
-                            <i class="fas fa-book" aria-hidden="true"></i> Browse Library
-                        </a>
-                    </div>
+        <div class="container">
+            <h2 class="section-title">Start Learning Today</h2>
+            <div class="grid quick-links">
+                <div class="card" onclick="app.navigate('videos')">
+                    <i class="fas fa-video"></i>
+                    <h3>Video Lessons</h3>
+                    <p>Watch educational videos across Math, Science, English, and General Knowledge</p>
                 </div>
-            </section>
-
-            <!-- Quick Links Section -->
-            <section class="container" aria-labelledby="quickLinksTitle">
-                <h2 id="quickLinksTitle" class="section-title">Start Learning Today</h2>
-                <div class="quick-links grid grid-auto-fit">
-                    <a href="#videos" class="link-card card" data-page="videos" aria-describedby="videoDesc">
-                        <div class="card-content">
-                            <i class="fas fa-video" aria-hidden="true"></i>
-                            <h3>Video Lessons</h3>
-                            <p id="videoDesc">Watch educational videos across Math, Science, English, and General Knowledge</p>
-                        </div>
-                    </a>
-                    <a href="#library" class="link-card card" data-page="library" aria-describedby="libraryDesc">
-                        <div class="card-content">
-                            <i class="fas fa-book-open" aria-hidden="true"></i>
-                            <h3>Digital Library</h3>
-                            <p id="libraryDesc">Download PDFs, notes, and e-books for offline study</p>
-                        </div>
-                    </a>
-                    <a href="#contact" class="link-card card" data-page="contact" aria-describedby="contactDesc">
-                        <div class="card-content">
-                            <i class="fas fa-envelope" aria-hidden="true"></i>
-                            <h3>Get in Touch</h3>
-                            <p id="contactDesc">Have questions? Contact us for support and guidance</p>
-                        </div>
-                    </a>
+                <div class="card" onclick="app.navigate('library')">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Digital Library</h3>
+                    <p>Download PDFs, notes, and e-books for offline study</p>
                 </div>
-
-                <!-- Placeholder: Future Features -->
-                <div class="future-feature" role="region" aria-labelledby="feature1Title">
-                    <i class="fas fa-language" aria-hidden="true"></i>
-                    <h3 id="feature1Title">Coming Soon: Regional Language Support</h3>
-                    <p>Switch between Hindi and Punjabi for better understanding</p>
+                <div class="card" onclick="app.navigate('contact')">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Get in Touch</h3>
+                    <p>Have questions? Contact us for support and guidance</p>
                 </div>
-
-                <div class="future-feature" role="region" aria-labelledby="feature2Title">
-                    <i class="fas fa-download" aria-hidden="true"></i>
-                    <h3 id="feature2Title">Coming Soon: Offline Mode</h3>
-                    <p>Download videos and notes for offline learning</p>
-                </div>
-            </section>
+            </div>
         </div>
+    </div>
 
-        <!-- ===== ABOUT US PAGE ===== -->
-        <div id="about" class="page" role="main" aria-label="About us page" aria-hidden="true">
-            <section class="container" aria-labelledby="aboutTitle">
-                <h1 id="aboutTitle" class="section-title">About Our Platform</h1>
-            <div class="about-content">
-                <p>Nabha Digital Learning Platform is dedicated to bridging the educational gap for rural school students in Nabha and surrounding areas. We believe that every child deserves access to quality education, regardless of their geographical location or economic background.</p>
+    <!-- About Page -->
+    <div id="about" class="page">
+        <div class="container">
+            <h1 class="section-title">About Our Platform</h1>
+            <div class="card" style="padding: 3rem; max-width: 900px; margin: 0 auto;">
+                <p style="font-size: 1.125rem; margin-bottom: 2rem; color: var(--gray);">
+                    Nabha Digital Learning Platform is dedicated to bridging the educational gap for rural school students in Nabha and surrounding areas. We believe that every child deserves access to quality education, regardless of their geographical location or economic background.
+                </p>
                 
-                <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
-                <p>To provide free, accessible, and high-quality educational resources to students in rural areas, helping them compete on equal footing with their urban counterparts and achieve their academic dreams.</p>
+                <h3 style="margin: 2rem 0 1rem; font-size: 1.5rem;"><i class="fas fa-bullseye" style="color: var(--primary);"></i> Our Mission</h3>
+                <p style="color: var(--gray); margin-bottom: 2rem;">
+                    To provide free, accessible, and high-quality educational resources to students in rural areas, helping them compete on equal footing with their urban counterparts and achieve their academic dreams.
+                </p>
                 
-                <h3><i class="fas fa-eye"></i> Our Vision</h3>
-                <p>To become the most trusted digital learning companion for rural students across Punjab, empowering them with knowledge, skills, and confidence to succeed in their academic journey.</p>
-                
-                <h3><i class="fas fa-star"></i> What We Offer</h3>
-                <div class="features-grid">
-                    <div class="feature-item">
-                        <i class="fas fa-video"></i>
-                        <h4>Video Lessons</h4>
-                        <p>Curated educational videos in multiple subjects</p>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-file-pdf"></i>
-                        <h4>Study Materials</h4>
-                        <p>Downloadable PDFs and notes for all classes</p>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-mobile-alt"></i>
-                        <h4>Mobile Friendly</h4>
-                        <p>Optimized for low-bandwidth rural internet</p>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-hand-holding-heart"></i>
-                        <h4>Completely Free</h4>
-                        <p>No hidden costs, accessible to everyone</p>
-                    </div>
-                </div>
-
-                <h3><i class="fas fa-users" aria-hidden="true"></i> Who We Serve</h3>
-                <p>Our platform is designed specifically for school students in rural Nabha, from Class 1 to Class 12. We focus on core subjects including Mathematics, Science, English, and General Knowledge, aligned with the curriculum followed in government and private schools.</p>
-                </div>
-            </section>
+                <h3 style="margin: 2rem 0 1rem; font-size: 1.5rem;"><i class="fas fa-eye" style="color: var(--primary);"></i> Our Vision</h3>
+                <p style="color: var(--gray);">
+                    To become the most trusted digital learning companion for rural students across Punjab, empowering them with knowledge, skills, and confidence to succeed in their academic journey.
+                </p>
+            </div>
         </div>
+    </div>
 
-        <!-- ===== VIDEOS PAGE ===== -->
-        <div id="videos" class="page" role="main" aria-label="Videos page" aria-hidden="true">
-            <section class="container" aria-labelledby="videosTitle">
-                <h1 id="videosTitle" class="section-title">Educational Videos</h1>
-                <p class="section-subtitle">Watch free video lessons across different subjects and classes</p>
+    <!-- Videos Page -->
+    <div id="videos" class="page">
+        <div class="container">
+            <h1 class="section-title">Educational Videos</h1>
+            
+            <div class="filter-section card">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" onclick="app.filterVideos('all')">All Videos</button>
+                    <button class="filter-btn" onclick="app.filterVideos('math')">Mathematics</button>
+                    <button class="filter-btn" onclick="app.filterVideos('science')">Science</button>
+                    <button class="filter-btn" onclick="app.filterVideos('english')">English</button>
+                    <button class="filter-btn" onclick="app.filterVideos('gk')">General Knowledge</button>
+                </div>
+            </div>
 
-                <!-- Filter Section -->
-                <div class="filter-section card" role="region" aria-labelledby="filterTitle">
-                    <h2 id="filterTitle" class="sr-only">Filter videos by subject</h2>
-                    <h3 class="filter-heading">Filter by Subject</h3>
-                    <div class="filter-buttons" role="group" aria-label="Subject filters">
-                        <button 
-                            class="filter-btn active" 
-                            data-filter="all"
-                            type="button"
-                            aria-pressed="true">
-                            All Videos
-                        </button>
-                        <button 
-                            class="filter-btn" 
-                            data-filter="math"
-                            type="button"
-                            aria-pressed="false">
-                            Mathematics
-                        </button>
-                        <button 
-                            class="filter-btn" 
-                            data-filter="science"
-                            type="button"
-                            aria-pressed="false">
-                            Science
-                        </button>
-                        <button 
-                            class="filter-btn" 
-                            data-filter="english"
-                            type="button"
-                            aria-pressed="false">
-                            English
-                        </button>
-                        <button 
-                            class="filter-btn" 
-                            data-filter="gk"
-                            type="button"
-                            aria-pressed="false">
-                            General Knowledge
-                        </button>
+            <div class="grid" id="videoGrid">
+                <div class="video-card card" data-category="math">
+                    <div class="video-thumbnail" onclick="app.loadVideo(this, 'https://www.youtube-nocookie.com/embed/1WPDgDgncNg')">
+                        <div class="video-placeholder">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <span class="video-category">Mathematics</span>
+                        <h3 class="video-title">Introduction to Algebra</h3>
+                        <p class="video-description">Learn the basics of algebraic expressions and equations for Class 8-10</p>
                     </div>
                 </div>
 
-                <!-- Video Grid -->
-                <div class="video-grid grid grid-auto-fill" id="videoGrid" role="region" aria-label="Video lessons">
-                    <!-- Math Videos -->
-                    <article class="video-card card" data-category="math">
-                        <div class="video-thumbnail" data-src="https://www.youtube-nocookie.com/embed/1WPDgDgncNg">
-                            <div class="video-placeholder">
-                                <i class="fas fa-play-circle"></i>
-                            </div>
-                            <div class="video-duration">12:35</div>
+                <div class="video-card card" data-category="math">
+                    <div class="video-thumbnail" onclick="app.loadVideo(this, 'https://www.youtube-nocookie.com/embed/sxnX5_LbBDU')">
+                        <div class="video-placeholder">
+                            <i class="fas fa-play-circle"></i>
                         </div>
-                        <button 
-                            class="save-btn" 
-                            data-save-id="video-algebra-1"
-                            data-save-type="video"
-                            data-save-title="Introduction to Algebra"
-                            type="button"
-                            aria-label="Save for later">
-                            <i class="far fa-bookmark"></i>
-                        </button>
-                        <div class="video-info card-content">
-                            <span class="video-category">Mathematics</span>
-                            <h3 class="video-title">Introduction to Algebra</h3>
-                            <p class="video-description">Learn the basics of algebraic expressions and equations for Class 8-10</p>
-                        </div>
-                    </article>
+                    </div>
+                    <div class="video-info">
+                        <span class="video-category">Mathematics</span>
+                        <h3 class="video-title">Geometry Fundamentals</h3>
+                        <p class="video-description">Understanding shapes, angles, and geometric principles</p>
+                    </div>
+                </div>
 
-                    <article class="video-card card" data-category="math">
-                        <div class="video-thumbnail" data-src="https://www.youtube-nocookie.com/embed/sxnX5_LbBDU">
-                            <div class="video-placeholder">
-                                <i class="fas fa-play-circle"></i>
-                            </div>
-                            <div class="video-duration">15:42</div>
+                <div class="video-card card" data-category="science">
+                    <div class="video-thumbnail" onclick="app.loadVideo(this, 'https://www.youtube-nocookie.com/embed/Qw4vFdRB6LI')">
+                        <div class="video-placeholder">
+                            <i class="fas fa-play-circle"></i>
                         </div>
-                        <button 
-                            class="save-btn" 
-                            data-save-id="video-geometry-1"
-                            data-save-type="video"
-                            data-save-title="Geometry Fundamentals"
-                            type="button"
-                            aria-label="Save for later">
-                            <i class="far fa-bookmark"></i>
-                        </button>
-                        <div class="video-info card-content">
-                            <span class="video-category">Mathematics</span>
-                            <h3 class="video-title">Geometry Fundamentals</h3>
-                            <p class="video-description">Understanding shapes, angles, and geometric principles</p>
-                        </div>
-                    </article>
+                    </div>
+                    <div class="video-info">
+                        <span class="video-category">Science</span>
+                        <h3 class="video-title">Photosynthesis Explained</h3>
+                        <p class="video-description">How plants make their own food - Biology for Class 6-8</p>
+                    </div>
+                </div>
 
-                    <!-- Science Videos -->
-                    <article class="video-card card" data-category="science">
-                        <div class="video-thumbnail" data-src="https://www.youtube-nocookie.com/embed/Qw4vFdRB6LI">
-                            <div class="video-placeholder">
-                                <i class="fas fa-play-circle"></i>
-                            </div>
-                            <div class="video-duration">8:27</div>
+                <div class="video-card card" data-category="science">
+                    <div class="video-thumbnail" onclick="app.loadVideo(this, 'https://www.youtube-nocookie.com/embed/pS-l0gLrMvs')">
+                        <div class="video-placeholder">
+                            <i class="fas fa-play-circle"></i>
                         </div>
-                        <button 
-                            class="save-btn" 
-                            data-save-id="video-photosynthesis-1"
-                            data-save-type="video"
-                            data-save-title="Photosynthesis Explained"
-                            type="button"
-                            aria-label="Save for later">
-                            <i class="far fa-bookmark"></i>
-                        </button>
-                        <div class="video-info card-content">
-                            <span class="video-category">Science</span>
-                            <h3 class="video-title">Photosynthesis Explained</h3>
-                            <p class="video-description">How plants make their own food - Biology for Class 6-8</p>
-                        </div>
-                    </article>
-
-                <div class="video-card" data-category="science">
-                    <div class="video-thumbnail">
-                        <iframe src="https://www.youtube-nocookie.com/embed/pS-l0gLrMvs" 
-                                loading="lazy"
-                                referrerpolicy="strict-origin-when-cross-origin"
-                                sandbox="allow-same-origin allow-scripts allow-presentation"
-                                allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
                         <span class="video-category">Science</span>
@@ -336,14 +798,11 @@
                     </div>
                 </div>
 
-                <!-- English Videos -->
-                <div class="video-card" data-category="english">
-                    <div class="video-thumbnail">
-                        <iframe src="https://www.youtube-nocookie.com/embed/EwIvN5dxW5g" 
-                                loading="lazy"
-                                referrerpolicy="strict-origin-when-cross-origin"
-                                sandbox="allow-same-origin allow-scripts allow-presentation"
-                                allowfullscreen></iframe>
+                <div class="video-card card" data-category="english">
+                    <div class="video-thumbnail" onclick="app.loadVideo(this, 'https://www.youtube-nocookie.com/embed/EwIvN5dxW5g')">
+                        <div class="video-placeholder">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
                     </div>
                     <div class="video-info">
                         <span class="video-category">English</span>
@@ -352,29 +811,11 @@
                     </div>
                 </div>
 
-                <div class="video-card" data-category="english">
-                    <div class="video-thumbnail">
-                        <iframe src="https://www.youtube-nocookie.com/embed/xBNpicyCGr0" 
-                                loading="lazy"
-                                referrerpolicy="strict-origin-when-cross-origin"
-                                sandbox="allow-same-origin allow-scripts allow-presentation"
-                                allowfullscreen></iframe>
-                    </div>
-                    <div class="video-info">
-                        <span class="video-category">English</span>
-                        <h3 class="video-title">Reading Comprehension</h3>
-                        <p class="video-description">Improve your reading skills and understanding</p>
-                    </div>
-                </div>
-
-                <!-- General Knowledge Videos -->
-                <div class="video-card" data-category="gk">
-                    <div class="video-thumbnail">
-                        <iframe src="https://www.youtube-nocookie.com/embed/ZnEPmSc4c7w" 
-                                loading="lazy"
-                                referrerpolicy="strict-origin-when-cross-origin"
-                                sandbox="allow-same-origin allow-scripts allow-presentation"
-                                allowfullscreen></iframe>
+                <div class="video-card card" data-category="gk">
+                    <div class="video-thumbnail" onclick="app.loadVideo(this, 'https://www.youtube-nocookie.com/embed/ZnEPmSc4c7w')">
+                        <div class="video-placeholder">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
                     </div>
                     <div class="video-info">
                         <span class="video-category">General Knowledge</span>
@@ -382,366 +823,147 @@
                         <p class="video-description">Key events and personalities in Indian history</p>
                     </div>
                 </div>
-
-                <div class="video-card" data-category="gk">
-                    <div class="video-thumbnail">
-                        <iframe src="https://www.youtube-nocookie.com/embed/HCDVN7DCzYE" 
-                                loading="lazy"
-                                referrerpolicy="strict-origin-when-cross-origin"
-                                sandbox="allow-same-origin allow-scripts allow-presentation"
-                                allowfullscreen></iframe>
-                    </div>
-                    <div class="video-info">
-                        <span class="video-category">General Knowledge</span>
-                        <h3 class="video-title">World Geography</h3>
-                        <p class="video-description">Learn about continents, countries, and capitals</p>
-                    </div>
-                </div>
             </div>
-
-                <!-- Placeholder for Interactive Quizzes -->
-                <div class="future-feature" role="region" aria-labelledby="quizFeatureTitle">
-                    <i class="fas fa-question-circle" aria-hidden="true"></i>
-                    <h3 id="quizFeatureTitle">Coming Soon: Interactive Quizzes</h3>
-                    <p>Test your knowledge after watching videos with fun quizzes</p>
-                </div>
-            </section>
         </div>
+    </div>
 
-        <!-- ===== LIBRARY PAGE ===== -->
-        <div id="library" class="page" role="main" aria-label="Library page" aria-hidden="true">
-            <section class="container" aria-labelledby="libraryTitle">
-                <h1 id="libraryTitle" class="section-title">Digital Library</h1>
-                <p class="section-subtitle">Download free study materials, notes, and e-books</p>
-
-                <div class="library-grid grid grid-auto-fill" role="region" aria-label="Study materials">
-                    <!-- Math Resources -->
-                    <article class="book-card card">
-                        <div class="card-content">
-                            <div class="book-icon">
-                                <i class="fas fa-file-pdf" aria-hidden="true"></i>
-                            </div>
-                            <h3 class="book-title">Class 10 Math Formula Sheet</h3>
-                            <div class="book-meta">
-                                <span class="book-tag">Mathematics</span>
-                                <span class="book-tag">Class 10</span>
-                                <span class="book-tag">2.5 MB</span>
-                            </div>
-                            <p class="file-size">Estimated download time: 30 seconds on 3G</p>
-                            <button 
-                                class="download-btn btn-accent" 
-                                data-filename="math-formula-class10.pdf"
-                                type="button"
-                                aria-describedby="mathFormulaDesc">
-                                <i class="fas fa-download" aria-hidden="true"></i> Download PDF
-                            </button>
-                            <div class="download-progress">
-                                <div class="download-progress-bar"></div>
-                            </div>
-                            <p class="sr-only" id="mathFormulaDesc">Download Class 10 Mathematics formula sheet PDF</p>
-                        </div>
-                    </article>
-
-                    <article class="book-card card">
-                        <div class="card-content">
-                            <div class="book-icon">
-                                <i class="fas fa-file-pdf" aria-hidden="true"></i>
-                            </div>
-                            <h3 class="book-title">Algebra Practice Questions</h3>
-                            <div class="book-meta">
-                                <span class="book-tag">Mathematics</span>
-                                <span class="book-tag">Class 8-10</span>
-                                <span class="book-tag">3.1 MB</span>
-                            </div>
-                            <p class="file-size">Estimated download time: 45 seconds on 3G</p>
-                            <button 
-                                class="download-btn btn-accent" 
-                                data-filename="algebra-practice.pdf"
-                                type="button"
-                                aria-describedby="algebraPracticeDesc">
-                                <i class="fas fa-download" aria-hidden="true"></i> Download PDF
-                            </button>
-                            <div class="download-progress">
-                                <div class="download-progress-bar"></div>
-                            </div>
-                            <p class="sr-only" id="algebraPracticeDesc">Download Algebra practice questions PDF</p>
-                        </div>
-                    </article>
-
-                <!-- Science Resources -->
-                <article class="book-card card">
+    <!-- Library Page -->
+    <div id="library" class="page">
+        <div class="container">
+            <h1 class="section-title">Digital Library</h1>
+            
+            <div class="grid">
+                <div class="book-card card">
                     <div class="card-content">
-                        <div class="book-icon">
-                            <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                        <div class="book-icon"><i class="fas fa-file-pdf"></i></div>
+                        <h3 class="book-title">Class 10 Math Formula Sheet</h3>
+                        <div class="book-meta">
+                            <span class="book-tag">Mathematics</span>
+                            <span class="book-tag">Class 10</span>
+                            <span class="book-tag">2.5 MB</span>
                         </div>
+                        <p class="file-size">Download time: ~30 seconds on 3G</p>
+                        <button class="btn btn-accent" onclick="app.download('math-formula-class10.pdf')">
+                            <i class="fas fa-download"></i> Download PDF
+                        </button>
+                    </div>
+                </div>
+
+                <div class="book-card card">
+                    <div class="card-content">
+                        <div class="book-icon"><i class="fas fa-file-pdf"></i></div>
                         <h3 class="book-title">Biology Notes - Human Body</h3>
                         <div class="book-meta">
                             <span class="book-tag">Science</span>
                             <span class="book-tag">Class 9-10</span>
                             <span class="book-tag">4.2 MB</span>
                         </div>
-                        <p class="file-size">Estimated download time: 55 seconds on 3G</p>
-                        <button 
-                            class="download-btn btn-accent" 
-                            data-filename="biology-human-body.pdf"
-                            type="button"
-                            aria-describedby="biologyHumanBodyDesc">
-                            <i class="fas fa-download" aria-hidden="true"></i> Download PDF
+                        <p class="file-size">Download time: ~55 seconds on 3G</p>
+                        <button class="btn btn-accent" onclick="app.download('biology-human-body.pdf')">
+                            <i class="fas fa-download"></i> Download PDF
                         </button>
-                        <div class="download-progress">
-                            <div class="download-progress-bar"></div>
-                        </div>
-                        <p class="sr-only" id="biologyHumanBodyDesc">Download Biology notes on the human body PDF</p>
                     </div>
-                </article>
+                </div>
 
-                <article class="book-card card">
+                <div class="book-card card">
                     <div class="card-content">
-                        <div class="book-icon">
-                            <i class="fas fa-file-pdf" aria-hidden="true"></i>
-                        </div>
-                        <h3 class="book-title">Physics - Laws of Motion</h3>
-                        <div class="book-meta">
-                            <span class="book-tag">Science</span>
-                            <span class="book-tag">Class 9-11</span>
-                            <span class="book-tag">3.8 MB</span>
-                        </div>
-                        <p class="file-size">Estimated download time: 45 seconds on 3G</p>
-                        <button 
-                            class="download-btn btn-accent" 
-                            data-filename="physics-motion.pdf"
-                            type="button"
-                            aria-describedby="physicsMotionDesc">
-                            <i class="fas fa-download" aria-hidden="true"></i> Download PDF
-                        </button>
-                        <div class="download-progress">
-                            <div class="download-progress-bar"></div>
-                        </div>
-                        <p class="sr-only" id="physicsMotionDesc">Download Physics laws of motion PDF</p>
-                    </div>
-                </article>
-
-                <!-- English Resources -->
-                <article class="book-card card">
-                    <div class="card-content">
-                        <div class="book-icon">
-                            <i class="fas fa-file-pdf" aria-hidden="true"></i>
-                        </div>
+                        <div class="book-icon"><i class="fas fa-file-pdf"></i></div>
                         <h3 class="book-title">English Grammar Guide</h3>
                         <div class="book-meta">
                             <span class="book-tag">English</span>
                             <span class="book-tag">Class 6-10</span>
                             <span class="book-tag">2.9 MB</span>
                         </div>
-                        <p class="file-size">Estimated download time: 35 seconds on 3G</p>
-                        <button 
-                            class="download-btn btn-accent" 
-                            data-filename="english-grammar.pdf"
-                            type="button"
-                            aria-describedby="englishGrammarDesc">
-                            <i class="fas fa-download" aria-hidden="true"></i> Download PDF
+                        <p class="file-size">Download time: ~35 seconds on 3G</p>
+                        <button class="btn btn-accent" onclick="app.download('english-grammar.pdf')">
+                            <i class="fas fa-download"></i> Download PDF
                         </button>
-                        <div class="download-progress">
-                            <div class="download-progress-bar"></div>
-                        </div>
-                        <p class="sr-only" id="englishGrammarDesc">Download English grammar guide PDF</p>
                     </div>
-                </article>
+                </div>
 
-                <article class="book-card card">
+                <div class="book-card card">
                     <div class="card-content">
-                        <div class="book-icon">
-                            <i class="fas fa-file-pdf" aria-hidden="true"></i>
-                        </div>
-                        <h3 class="book-title">Essay Writing Handbook</h3>
-                        <div class="book-meta">
-                            <span class="book-tag">English</span>
-                            <span class="book-tag">Class 8-12</span>
-                            <span class="book-tag">1.8 MB</span>
-                        </div>
-                        <p class="file-size">Estimated download time: 25 seconds on 3G</p>
-                        <button 
-                            class="download-btn btn-accent" 
-                            data-filename="essay-writing.pdf"
-                            type="button"
-                            aria-describedby="essayWritingDesc">
-                            <i class="fas fa-download" aria-hidden="true"></i> Download PDF
-                        </button>
-                        <div class="download-progress">
-                            <div class="download-progress-bar"></div>
-                        </div>
-                        <p class="sr-only" id="essayWritingDesc">Download essay writing handbook PDF</p>
-                    </div>
-                </article>
-
-                <!-- General Knowledge Resources -->
-                <article class="book-card card">
-                    <div class="card-content">
-                        <div class="book-icon">
-                            <i class="fas fa-file-pdf" aria-hidden="true"></i>
-                        </div>
+                        <div class="book-icon"><i class="fas fa-file-pdf"></i></div>
                         <h3 class="book-title">Indian History Timeline</h3>
                         <div class="book-meta">
                             <span class="book-tag">General Knowledge</span>
                             <span class="book-tag">Class 8-12</span>
                             <span class="book-tag">5.2 MB</span>
                         </div>
-                        <p class="file-size">Estimated download time: 1 min on 3G</p>
-                        <button 
-                            class="download-btn btn-accent" 
-                            data-filename="indian-history.pdf"
-                            type="button"
-                            aria-describedby="indianHistoryDesc">
-                            <i class="fas fa-download" aria-hidden="true"></i> Download PDF
+                        <p class="file-size">Download time: ~1 min on 3G</p>
+                        <button class="btn btn-accent" onclick="app.download('indian-history.pdf')">
+                            <i class="fas fa-download"></i> Download PDF
                         </button>
-                        <div class="download-progress">
-                            <div class="download-progress-bar"></div>
-                        </div>
-                        <p class="sr-only" id="indianHistoryDesc">Download Indian history timeline PDF</p>
                     </div>
-                </article>
+                </div>
 
-                <article class="book-card card">
+                <div class="book-card card">
                     <div class="card-content">
-                        <div class="book-icon">
-                            <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                        <div class="book-icon"><i class="fas fa-file-pdf"></i></div>
+                        <h3 class="book-title">Physics - Laws of Motion</h3>
+                        <div class="book-meta">
+                            <span class="book-tag">Science</span>
+                            <span class="book-tag">Class 9-11</span>
+                            <span class="book-tag">3.8 MB</span>
                         </div>
+                        <p class="file-size">Download time: ~45 seconds on 3G</p>
+                        <button class="btn btn-accent" onclick="app.download('physics-motion.pdf')">
+                            <i class="fas fa-download"></i> Download PDF
+                        </button>
+                    </div>
+                </div>
+
+                <div class="book-card card">
+                    <div class="card-content">
+                        <div class="book-icon"><i class="fas fa-file-pdf"></i></div>
                         <h3 class="book-title">World Geography Atlas</h3>
                         <div class="book-meta">
                             <span class="book-tag">General Knowledge</span>
                             <span class="book-tag">Class 6-10</span>
                             <span class="book-tag">6.5 MB</span>
                         </div>
-                        <p class="file-size">Estimated download time: 1 min 15 sec on 3G</p>
-                        <button 
-                            class="download-btn btn-accent" 
-                            data-filename="world-geography.pdf"
-                            type="button"
-                            aria-describedby="worldGeographyDesc">
-                            <i class="fas fa-download" aria-hidden="true"></i> Download PDF
+                        <p class="file-size">Download time: ~1 min 15 sec on 3G</p>
+                        <button class="btn btn-accent" onclick="app.download('world-geography.pdf')">
+                            <i class="fas fa-download"></i> Download PDF
                         </button>
-                        <div class="download-progress">
-                            <div class="download-progress-bar"></div>
-                        </div>
-                        <p class="sr-only" id="worldGeographyDesc">Download world geography atlas PDF</p>
                     </div>
-                </article>
-
-                <!-- Additional Study Materials -->
-                <article class="book-card card">
-                    <div class="card-content">
-                        <div class="book-icon">
-                            <i class="fas fa-file-pdf" aria-hidden="true"></i>
-                        </div>
-                        <h3 class="book-title">NCERT Solutions Class 10</h3>
-                        <div class="book-meta">
-                            <span class="book-tag">All Subjects</span>
-                            <span class="book-tag">Class 10</span>
-                            <span class="book-tag">8.4 MB</span>
-                        </div>
-                        <p class="file-size">Estimated download time: 1 min 40 sec on 3G</p>
-                        <button 
-                            class="download-btn btn-accent" 
-                            data-filename="ncert-solutions-10.pdf"
-                            type="button"
-                            aria-describedby="ncertSolutionsDesc">
-                            <i class="fas fa-download" aria-hidden="true"></i> Download PDF
-                        </button>
-                        <div class="download-progress">
-                            <div class="download-progress-bar"></div>
-                        </div>
-                        <p class="sr-only" id="ncertSolutionsDesc">Download NCERT solutions for class 10 PDF</p>
-                    </div>
-                </article>
-            </div>
-
-            <!-- Placeholder: Offline Download Feature -->
-            <div class="future-feature" style="margin-top: 3rem;">
-                <i class="fas fa-cloud-download-alt"></i>
-                <h3>Coming Soon: Bulk Download for Offline Access</h3>
-                <p>Download entire subject packages for studying without internet</p>
+                </div>
             </div>
         </div>
     </div>
 
-        <!-- ===== CONTACT PAGE ===== -->
-        <div id="contact" class="page" role="main" aria-label="Contact page" aria-hidden="true">
-            <section class="container" aria-labelledby="contactTitle">
-                <h1 id="contactTitle" class="section-title">Contact Us</h1>
-                <p class="section-subtitle">Have questions or suggestions? We'd love to hear from you!</p>
-
-                <div class="contact-container grid">
-                    <!-- Contact Form -->
-                    <div class="contact-form card">
-                        <div class="card-content">
-                            <h2>
-                                <i class="fas fa-paper-plane" aria-hidden="true"></i> 
-                                Send us a Message
-                            </h2>
-                            <form id="contactForm" novalidate>
-                                <div class="form-group">
-                                    <label for="name">Full Name</label>
-                                    <input 
-                                        type="text" 
-                                        id="name" 
-                                        name="name" 
-                                        required
-                                        autocomplete="name"
-                                        aria-describedby="nameError"
-                                        minlength="2">
-                                    <div class="error-message" id="nameError" role="alert" aria-live="polite"></div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="email">Email Address</label>
-                                    <input 
-                                        type="email" 
-                                        id="email" 
-                                        name="email" 
-                                        required
-                                        autocomplete="email"
-                                        inputmode="email"
-                                        aria-describedby="emailError">
-                                    <div class="error-message" id="emailError" role="alert" aria-live="polite"></div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="subject">Subject</label>
-                                    <input 
-                                        type="text" 
-                                        id="subject" 
-                                        name="subject" 
-                                        placeholder="What is this regarding?"
-                                        autocomplete="off">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="message">Message</label>
-                                    <textarea 
-                                        id="message" 
-                                        name="message" 
-                                        required
-                                        minlength="10"
-                                        rows="5"
-                                        aria-describedby="messageError"
-                                        placeholder="Please describe your question or feedback..."></textarea>
-                                    <div class="error-message" id="messageError" role="alert" aria-live="polite"></div>
-                                </div>
-
-                                <button type="submit" class="btn btn-primary" style="width: 100%;" aria-describedby="submitHelp">
-                                    <i class="fas fa-paper-plane" aria-hidden="true"></i> 
-                                    <span>Send Message</span>
-                                </button>
-                                <p class="sr-only" id="submitHelp">This form will be validated before submission</p>
-                            </form>
+    <!-- Contact Page -->
+    <div id="contact" class="page">
+        <div class="container">
+            <h1 class="section-title">Contact Us</h1>
+            
+            <div class="contact-grid">
+                <div class="card" style="padding: 2rem;">
+                    <h2 style="margin-bottom: 1.5rem;"><i class="fas fa-paper-plane"></i> Send us a Message</h2>
+                    <form id="contactForm" onsubmit="app.submitForm(event)">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
 
-                <!-- Contact Information -->
-                <div class="contact-info">
-                    <h3><i class="fas fa-info-circle"></i> Get in Touch</h3>
-                    <p class="muted">Feel free to reach out to us through any of the following channels. We typically respond within 24-48 hours.</p>
-
+                <div>
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
@@ -749,7 +971,6 @@
                             <p>Nabha, Punjab, India</p>
                         </div>
                     </div>
-
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
                         <div>
@@ -757,32 +978,20 @@
                             <p>support@nabhalearn.org</p>
                         </div>
                     </div>
-
                     <div class="contact-item">
                         <i class="fas fa-phone"></i>
                         <div>
                             <h4>Phone</h4>
                             <p>+91-XXXX-XXXXXX</p>
-                            <small style="color: var(--text-light);">Monday - Saturday, 9 AM - 6 PM</small>
+                            <small style="color: var(--gray);">Monday - Saturday, 9 AM - 6 PM</small>
                         </div>
                     </div>
-
                     <div class="contact-item">
                         <i class="fas fa-clock"></i>
                         <div>
                             <h4>Support Hours</h4>
                             <p>9:00 AM - 6:00 PM (IST)</p>
-                            <small style="color: var(--text-light);">Monday through Saturday</small>
-                        </div>
-                    </div>
-
-                    <div class="follow-us">
-                        <h4>Follow Us</h4>
-                        <div class="social-icons">
-                            <a href="#"><i class="fab fa-facebook"></i></a>
-                            <a href="#"><i class="fab fa-youtube"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <small style="color: var(--gray);">Monday through Saturday</small>
                         </div>
                     </div>
                 </div>
@@ -790,25 +999,158 @@
         </div>
     </div>
 
-    </main>
-
-    <!-- ===== FOOTER ===== -->
-    <footer role="contentinfo">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h2>
-                        <i class="fas fa-graduation-cap" aria-hidden="true"></i>
-                        Nabha Digital Learning
-                    </h2>
-                    <p>Empowering Rural Education, One Student at a Time</p>
-                </div>
-                <p class="footer-note">
-                    &copy; 2024 Nabha Learning Platform. All rights reserved. | Made with <i class="fas fa-heart" aria-label="love"></i>
-                </p>
-            </div>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-brand">
+            <h2><i class="fas fa-graduation-cap"></i> Nabha Digital Learning</h2>
+            <p>Empowering Rural Education, One Student at a Time</p>
+        </div>
+        <p>&copy; 2024 Nabha Learning Platform. All rights reserved. Made with <i class="fas fa-heart" style="color: #ef4444;"></i></p>
     </footer>
 
-    <!-- ===== JAVASCRIPT ===== -->
-    <script src="script.js" defer></script>
+    <script>
+        const app = {
+            currentPage: 'home',
+            
+            navigate(page) {
+                // Hide all pages
+                document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+                
+                // Show selected page
+                document.getElementById(page).classList.add('active');
+                
+                // Update nav links
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+                event.target.classList.add('active');
+                
+                // Close mobile menu
+                document.getElementById('navMenu').classList.remove('active');
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                this.currentPage = page;
+            },
+            
+            toggleMenu() {
+                document.getElementById('navMenu').classList.toggle('active');
+            },
+            
+            search(query) {
+                if (!query.trim()) {
+                    document.querySelectorAll('.video-card, .book-card').forEach(card => {
+                        card.style.display = 'block';
+                    });
+                    return;
+                }
+                
+                const searchLower = query.toLowerCase();
+                let matchCount = 0;
+                
+                document.querySelectorAll('.video-card, .book-card').forEach(card => {
+                    const text = card.textContent.toLowerCase();
+                    if (text.includes(searchLower)) {
+                        card.style.display = 'block';
+                        matchCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Auto-navigate to videos if searching from home
+                if (this.currentPage === 'home' && matchCount > 0 && query.length > 2) {
+                    setTimeout(() => {
+                        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+                        document.getElementById('videos').classList.add('active');
+                        this.currentPage = 'videos';
+                    }, 500);
+                }
+            },
+            
+            filterVideos(category) {
+                // Update active button
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                event.target.classList.add('active');
+                
+                // Filter videos
+                document.querySelectorAll('.video-card').forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            },
+            
+            loadVideo(thumbnail, url) {
+                const placeholder = thumbnail.querySelector('.video-placeholder');
+                if (placeholder) {
+                    const iframe = document.createElement('iframe');
+                    iframe.src = url;
+                    iframe.allowFullscreen = true;
+                    iframe.loading = 'lazy';
+                    thumbnail.appendChild(iframe);
+                    placeholder.style.display = 'none';
+                }
+            },
+            
+            download(filename) {
+                const btn = event.target.closest('.btn');
+                btn.classList.add('loading');
+                btn.disabled = true;
+                
+                setTimeout(() => {
+                    btn.classList.remove('loading');
+                    btn.disabled = false;
+                    this.showToast(`Download started: ${filename}`, 'success');
+                }, 1500);
+            },
+            
+            submitForm(e) {
+                e.preventDefault();
+                const btn = e.target.querySelector('button');
+                btn.classList.add('loading');
+                btn.disabled = true;
+                
+                setTimeout(() => {
+                    btn.classList.remove('loading');
+                    btn.disabled = false;
+                    this.showToast('Message sent successfully!', 'success');
+                    e.target.reset();
+                }, 2000);
+            },
+            
+            showToast(message, type = 'success') {
+                const toast = document.createElement('div');
+                toast.className = `toast toast-${type}`;
+                toast.innerHTML = `
+                    <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+                    <span>${message}</span>
+                `;
+                
+                document.body.appendChild(toast);
+                
+                setTimeout(() => {
+                    toast.remove();
+                }, 4000);
+            }
+        };
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const menu = document.getElementById('navMenu');
+            const toggle = document.getElementById('menuToggle');
+            
+            if (menu.classList.contains('active') && 
+                !menu.contains(e.target) && 
+                !toggle.contains(e.target)) {
+                menu.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
