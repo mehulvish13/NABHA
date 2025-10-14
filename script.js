@@ -191,10 +191,16 @@ class NabhaApp {
   showToast(message, type = 'info') {
     const toast = document.createElement('div');
     toast.className = `toast toast-${type}`;
-    toast.innerHTML = `
-      <span>${message}</span>
-      <button onclick="this.parentElement.remove()">×</button>
-    `;
+    
+    const span = document.createElement('span');
+    span.textContent = message; // Safe - no HTML injection
+    
+    const btn = document.createElement('button');
+    btn.textContent = '×';
+    btn.addEventListener('click', () => toast.remove()); // Safe event listener
+    
+    toast.appendChild(span);
+    toast.appendChild(btn);
     
     let container = document.getElementById('toastContainer');
     if (!container) {
