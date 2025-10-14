@@ -1,68 +1,66 @@
-// ===== SIMPLE NABHA LEARNING PLATFORM =====
+// NABHA Learning Platform - Clean & Simple
 
 class NabhaApp {
   constructor() {
     this.currentPage = 'home';
-    this.theme = localStorage.getItem('theme') || 'light';
     this.init();
   }
 
   init() {
     this.setupEventListeners();
-    this.applyTheme();
   }
 
   setupEventListeners() {
-    // Theme toggle
-    const themeToggle = document.getElementById('themeToggle');
-    if (themeToggle) {
-      themeToggle.addEventListener('click', () => this.toggleTheme());
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    if (menuToggle) {
+      menuToggle.addEventListener('click', () => this.toggleMobileMenu());
     }
     
-    // Mobile menu
-    document.getElementById('menuToggle')?.addEventListener('click', () => this.toggleMobileMenu());
-    
-    // Navigation
+    // Navigation links
     document.addEventListener('click', (e) => {
-      if (e.target.matches('[data-page]')) {
+      const pageLink = e.target.closest('[data-page]');
+      if (pageLink) {
         e.preventDefault();
-        this.navigateToPage(e.target.dataset.page);
+        this.navigateToPage(pageLink.dataset.page);
       }
     });
 
-    // Search
-    document.getElementById('searchInput')?.addEventListener('input', (e) => {
-      this.performSearch(e.target.value);
+    // Search input
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        this.performSearch(e.target.value);
+      });
+    }
+
+    // Video placeholders
+    document.addEventListener('click', (e) => {
+      const videoPlaceholder = e.target.closest('.video-placeholder');
+      if (videoPlaceholder) this.loadVideo(videoPlaceholder);
     });
-  }
 
-  // ===== THEME =====
-  toggleTheme() {
-    this.theme = this.theme === 'light' ? 'dark' : 'light';
-    this.applyTheme();
-    localStorage.setItem('theme', this.theme);
-  }
+    // Download buttons
+    document.addEventListener('click', (e) => {
+      const downloadBtn = e.target.closest('.download-btn');
+      if (downloadBtn) this.handleDownload(downloadBtn);
+    });
 
-  applyTheme() {
-    // Set data attribute
-    document.documentElement.setAttribute('data-theme', this.theme);
-    
-    // Update body classes for additional styling hooks
-    document.body.classList.remove('theme-light', 'theme-dark');
-    document.body.classList.add(`theme-${this.theme}`);
-    
-    // Update icon
-    const icon = document.querySelector('#themeToggle i');
-    if (icon) {
-      icon.className = this.theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
-    }
-    
-    // Update button aria-pressed state
-    const toggle = document.getElementById('themeToggle');
-    if (toggle) {
-      toggle.setAttribute('aria-pressed', this.theme === 'dark' ? 'true' : 'false');
+    // Filter buttons
+    document.addEventListener('click', (e) => {
+      if (e.target.matches('.filter-btn')) {
+        this.filterVideos(e.target.dataset.filter);
+      }
+    });
+
+    // Contact form
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => this.handleContactForm(e));
     }
   }
+
+
 
   // ===== NAVIGATION =====
   navigateToPage(pageId) {
@@ -103,39 +101,71 @@ class NabhaApp {
 
   // ===== SEARCH =====
   performSearch(query) {
-    const cards = document.querySelectorAll('.video-card, .book-card');
+    const cards = document.querySelectorAll('.video-card, .book-card, .link-card');
+    const resultsCount = document.getElementById('searchResultsCount');
     
     if (!query.trim()) {
       cards.forEach(card => card.style.display = 'block');
+      if (resultsCount) {
+        resultsCount.classList.remove('visible');
+      }
       return;
     }
 
+    let matchCount = 0;
     cards.forEach(card => {
       const text = card.textContent.toLowerCase();
       const matches = text.includes(query.toLowerCase());
       card.style.display = matches ? 'block' : 'none';
+      if (matches) matchCount++;
     });
+
+    // Show results count
+    if (resultsCount) {
+      resultsCount.textContent = `Found ${matchCount} result${matchCount !== 1 ? 's' : ''}`;
+      resultsCount.classList.add('visible');
+    }
+
+    // Navigate to appropriate page if searching from home
+    if (this.currentPage === 'home' && query.trim()) {
+      const firstMatch = document.querySelector('.video-card:not([style*="display: none"])');
+      if (firstMatch) {
+        setTimeout(() => this.navigateToPage('videos'), 300);
+      }
+    }
   }
 
-  // ===== VIDEO FILTERS =====
+  // Basic filtering function
   filterVideos(category) {
     const videos = document.querySelectorAll('.video-card');
-    const buttons = document.querySelectorAll('.filter-btn');
-    
-    // Update buttons
-    buttons.forEach(btn => btn.classList.remove('active'));
-    document.querySelector(`[data-filter="${category}"]`)?.classList.add('active');
-    
-    // Filter videos
     videos.forEach(video => {
       const show = category === 'all' || video.dataset.category === category;
       video.style.display = show ? 'block' : 'none';
     });
   }
 
-  // ===== DOWNLOADS =====
-  downloadFile(filename) {
-    this.showToast(`Download started: ${filename}`, 'info');
+  // Simple download handler
+  handleDownload(btn) {
+    const filename = btn.dataset.filename || 'file.pdf';
+    this.showToast(`Download started: ${filename}`);
+  }
+
+  // Load video when placeholder is clicked
+  loadVideo(placeholder) {
+    const container = placeholder.parentElement;
+    const videoUrl = container.dataset.src;
+    
+    if (!videoUrl) return;
+
+    // Create and configure iframe
+    const iframe = document.createElement('iframe');
+    iframe.src = videoUrl;
+    iframe.allowFullscreen = true;
+    iframe.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:none';
+    
+    // Replace placeholder with iframe
+    container.appendChild(iframe);
+    placeholder.style.display = 'none';
   }
 
   // ===== FORM HANDLING =====
@@ -183,42 +213,7 @@ class NabhaApp {
   }
 }
 
-// ===== INITIALIZE =====
+// ===== INITIALIZE APP =====
 document.addEventListener('DOMContentLoaded', () => {
   window.nabhaApp = new NabhaApp();
-  
-  // Form handling
-  document.getElementById('contactForm')?.addEventListener('submit', (e) => {
-    window.nabhaApp.handleContactForm(e);
-  });
-  
-  // Filter buttons
-  document.addEventListener('click', (e) => {
-    if (e.target.matches('.filter-btn')) {
-      const category = e.target.dataset.filter;
-      window.nabhaApp.filterVideos(category);
-    }
-    
-    if (e.target.matches('.download-btn')) {
-      const filename = e.target.dataset.filename;
-      window.nabhaApp.downloadFile(filename);
-    }
-  });
 });
-
-// ===== BACKWARD COMPATIBILITY =====
-function showPage(pageId) {
-  window.nabhaApp?.navigateToPage(pageId);
-}
-
-function filterVideos(category) {
-  window.nabhaApp?.filterVideos(category);
-}
-
-function downloadFile(filename) {
-  window.nabhaApp?.downloadFile(filename);
-}
-
-function toggleMenu() {
-  window.nabhaApp?.toggleMobileMenu();
-}
