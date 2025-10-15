@@ -1,439 +1,323 @@
-# 🎓 Nabha Learning Platform
+# 🎓 Mindly - Learn. Grow. Shine.
 
-> A modern, accessible digital learning platform for rural school students in Nabha, Punjab
+> A collaborative learning platform connecting students with mentors and study groups
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 ---
 
-## 📖 Table of Contents
-
-- [Overview](#-overview)
-- [Features](#-features)
-- [Demo](#-demo)
-- [Getting Started](#-getting-started)
-- [File Structure](#-file-structure)
-- [How It Works](#-how-it-works)
-- [Customization](#-customization)
-- [Browser Support](#-browser-support)
-- [Contributing](#-contributing)
-- [License](#-license)
-
----
-
-## 🌟 Overview
-
-Nabha Learning Platform is a **free, open-source educational website** designed to help rural students access quality learning materials. The platform provides:
-
-- 📹 Educational video lessons
-- 📚 Downloadable study materials
-- 🌙 Beautiful dark mode
-- 📱 Mobile-friendly design
-- ♿ Full accessibility support
-
-**No backend required** - runs entirely in the browser!
-
----
-
-## ✨ Features (Simplified)
-
-- Clean, responsive UI focused on accessibility and performance
-- Single-page layout with client-side navigation, search, and filters
-- Video library and downloadable PDFs (static files)
-- Lightweight notification toasts
-
-Note: The codebase has been simplified to remove optional features (dark-mode toggle, save/bookmark persistence) to make deployment easier and reduce maintenance overhead.
-
----
-
-## 🎬 Demo
-
-### Light Mode
-![Light Mode Preview](docs/light-mode.png)
-
-### Dark Mode
-![Dark Mode Preview](docs/dark-mode.png)
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-You only need a modern web browser! No installation required.
-
-### Quick Start
-
-1. **Download the files**
-   ```bash
-   git clone https://github.com/mehulvish13/NABHA.git
-   cd NABHA
-   ```
-
-2. **Open in browser**
-   - Double-click `index.html`, or
-   - Use a local server:
-   ```bash
-   # Python
-   python -m http.server 8000
-   
-   # Node.js (with npx)
-   npx serve
-   
-   # PHP
-   php -S localhost:8000
-   ```
-
-3. **Visit in browser**
-   ```
-   http://localhost:8000
-   ```
-
-That's it! 🎉
-
----
-
-## 📁 File Structure
+## ✨ Ultra Simple - Just 3 Files!
 
 ```
 NABHA/
-│
-├── index.html              # Main HTML file (all pages in one)
-├── styles.css              # All styling (design system + components)
-├── simple-script.js        # JavaScript functionality
-├── toast.css               # Toast notification styles
-│
-├── README.md               # This file
-├── IMPROVEMENTS.md         # Changelog and enhancement details
-│
-└── docs/                   # Documentation images (optional)
-    ├── light-mode.png
-    └── dark-mode.png
+├── 📄 index.html    # Complete web application
+├── 📄 style.css     # All styling
+└── 📄 script.js     # All functionality
 ```
 
-### File Descriptions
-
-| File | Purpose | Lines |
-|------|---------|-------|
-| `index.html` | Complete website structure (cleaned) | ~800 |
-| `styles.css` | Core styling (cleaned & minimal) | ~700 |
-| `simple-script.js` | Client-side navigation & features | ~250 |
-| `toast.css` | Notification styles (minimal) | ~30 |
+**That's it!** The entire professional platform in just 3 files.
 
 ---
 
-## 🔧 How It Works
+## 🚀 Quick Start
 
-### Architecture
+### Option 1: Open Directly
+1. Download the files
+2. Double-click `index.html`
+3. Done! (works offline)
 
-The platform uses a **Single Page Application (SPA)** design:
+### Option 2: Use Local Server (Recommended)
+```bash
+# Using Python
+python -m http.server 8000
 
-```
-┌─────────────────────────────────────┐
-│         index.html                  │
-│  ┌─────────────────────────────┐   │
-│  │  Navigation Bar             │   │
-│  └─────────────────────────────┘   │
-│                                     │
-│  ┌─────────────────────────────┐   │
-│  │  Page 1: Home (active)      │   │
-│  │  Page 2: About (hidden)     │   │
-│  │  Page 3: Videos (hidden)    │   │
-│  │  Page 4: Library (hidden)   │   │
-│  │  Page 5: Contact (hidden)   │   │
-│  └─────────────────────────────┘   │
-│                                     │
-│  ┌─────────────────────────────┐   │
-│  │  Footer                     │   │
-│  └─────────────────────────────┘   │
-└─────────────────────────────────────┘
+# Using Node.js
+npx serve
+
+# Using PHP
+php -S localhost:8000
 ```
 
-### Key Components
+Then visit: **`http://localhost:8000`**
 
-#### 1. Theme System
-```javascript
-// Stored in localStorage
-theme: 'light' | 'dark'
+---
 
-// Applied via CSS custom properties
-[data-theme="dark"] {
-  --primary-color: #60a5fa;
-  --bg-primary: #1e293b;
-  // ... more variables
-}
-```
+## 📋 Features
 
-#### 2. Navigation System
-```javascript
-// Single-page navigation
-navigateToPage(pageId) {
-  // Hide all pages
-  // Show selected page
-  // Update URL hash
-}
-```
+### 🎯 Core Pages
+- ✅ **Home** - Hero section with quick links
+- ✅ **About** - Mission, vision, and statistics
+- ✅ **Videos** - Educational video library with filters
+- ✅ **Library** - Downloadable study materials
+- ✅ **Mentorship** - Connect with expert mentors
+- ✅ **Study Groups** - Join or create study groups
+- ✅ **Contact** - Contact form and information
 
-#### 3. Event Handling
-```javascript
-// Centralized event delegation
-document.addEventListener('click', (e) => {
-  if (e.target.matches('.save-btn')) { ... }
-  if (e.target.matches('.download-btn')) { ... }
-  // ... more handlers
-});
-```
+### 🎨 Design Features
+- ✅ Modern gradient UI
+- ✅ Smooth animations
+- ✅ Responsive design (mobile, tablet, desktop)
+- ✅ Professional card layouts
+- ✅ Interactive hover effects
+
+### 💻 Technical Features
+- ✅ Single-page application (SPA)
+- ✅ No dependencies (vanilla JS)
+- ✅ Toast notifications
+- ✅ URL routing with browser history
+- ✅ Event delegation
+- ✅ ARIA accessibility
+
+---
+
+## 🎓 Mentorship Program
+
+Connect with 4+ expert mentors:
+- **Rajesh Kumar** - Math & Physics
+- **Priya Sharma** - English & Hindi
+- **Amit Singh** - Biology & Chemistry (NEET/JEE)
+- **Neha Verma** - Career Guidance
+
+### How It Works
+1. Browse mentor profiles
+2. Click "Contact Mentor"
+3. Get connected via email
+4. Schedule regular sessions
+
+---
+
+## 👥 Study Groups
+
+Join 5+ active study groups:
+- **Class 10 Math Wizards** (8 members, Saturdays)
+- **Science Explorers** (12 members, Tues & Thurs)
+- **English Conversation Club** (15 members, Sundays)
+- **Board Exam Prep 2026** (20 members, Daily)
+- **JEE/NEET Aspirants** (10 members, Mon/Wed/Fri)
+
+Or **create your own** study group!
+
+---
+
+## 🛠️ File Details
+
+### `index.html` (~35 KB)
+- Complete HTML structure
+- 7 page sections
+- Semantic markup
+- SEO optimized
+
+### `style.css` (~8 KB)
+- CSS variables for theming
+- Responsive breakpoints
+- Animations and transitions
+- Grid and flexbox layouts
+
+### `script.js` (~5 KB)
+- Page navigation
+- Event handlers
+- Toast notifications
+- Form validation
+
+**Total**: ~48 KB (incredibly lightweight!)
 
 ---
 
 ## 🎨 Customization
 
 ### Change Colors
-
-Edit CSS variables in `styles.css`:
-
+Edit CSS variables in `style.css`:
 ```css
 :root {
-  --primary-color: #2563eb;      /* Main blue */
-  --secondary-color: #10b981;    /* Green */
-  --accent-color: #f59e0b;       /* Orange */
+    --primary: #2563eb;    /* Blue */
+    --secondary: #10b981;  /* Green */
+    --accent: #f59e0b;     /* Orange */
 }
 ```
 
-### Add New Video
-
-In `index.html`, find the video section and add:
-
+### Add More Mentors
+Copy a mentor card in `index.html` and edit:
 ```html
-<article class="video-card card" data-category="math">
-  <div class="video-thumbnail" data-src="https://www.youtube-nocookie.com/embed/VIDEO_ID">
-    <div class="video-placeholder">
-      <i class="fas fa-play-circle"></i>
+<div class="book-card card">
+    <div class="card-content">
+        <h3 class="book-title">Your Name</h3>
+        <div class="book-meta">
+            <span class="book-tag">Your Subject</span>
+        </div>
+        <p>Your description</p>
+        <button class="btn btn-accent mentor-contact">
+            Contact Mentor
+        </button>
     </div>
-    <div class="video-duration">12:30</div>
-  </div>
-  <div class="video-info card-content">
-    <span class="video-category">Mathematics</span>
-    <h3 class="video-title">Your Video Title</h3>
-    <p class="video-description">Description here</p>
-  </div>
-</article>
+</div>
 ```
 
-### Add New Book/PDF
+### Add More Study Groups
+Same process - copy a group card and customize!
 
-```html
-<article class="book-card card">
-  <div class="card-content">
-    <div class="book-icon">
-      <i class="fas fa-file-pdf"></i>
-    </div>
-    <h3 class="book-title">Your Book Title</h3>
-    <div class="book-meta">
-      <span class="book-tag">Subject</span>
-      <span class="book-tag">Class X</span>
-      <span class="book-tag">2.5 MB</span>
-    </div>
-    <p class="file-size">Estimated download time: 30 seconds on 3G</p>
-    <button 
-      class="download-btn btn-accent" 
-      data-filename="your-file.pdf"
-      type="button">
-      <i class="fas fa-download"></i> Download PDF
-    </button>
-    <div class="download-progress">
-      <div class="download-progress-bar"></div>
-    </div>
-  </div>
-</article>
+---
+
+## 📱 Browser Support
+
+- ✅ Chrome (latest)
+- ✅ Firefox (latest)
+- ✅ Safari (latest)
+- ✅ Edge (latest)
+- ✅ Mobile browsers (iOS, Android)
+
+---
+
+## 🚀 Deployment
+
+### GitHub Pages
+1. Push files to GitHub
+2. Settings → Pages
+3. Select `main` branch
+4. Done! Your site is live
+
+### Netlify
+1. Drag & drop your folder
+2. Done! Instant deployment
+
+### Vercel
+```bash
+vercel
+```
+That's it!
+
+---
+
+## 📂 Folder Structure
+
+```
+NABHA/
+├── index.html              # Main application
+├── style.css               # All styles
+├── script.js               # All functionality
+├── README.md               # This file
+├── STRUCTURE.md            # Detailed structure guide
+│
+├── docs/                   # Documentation
+│   ├── 404.html            # Error page
+│   ├── FEATURES.md         # Feature list
+│   ├── DEMO_GUIDE.md       # Testing guide
+│   └── ...                 # Other docs
+│
+├── .gitignore              # Git ignore
+├── .gitattributes          # Git config
+└── .editorconfig           # Editor config
 ```
 
 ---
 
-## 🌐 Browser Support
+## 🎯 Why This Structure?
 
-| Browser | Minimum Version |
-|---------|----------------|
-| Chrome | 90+ |
-| Firefox | 88+ |
-| Safari | 14+ |
-| Edge | 90+ |
+### ✨ **Simple**
+- Only 3 files to manage
+- No complex build process
+- Easy to understand
 
-### Required Features
-- CSS Custom Properties
-- CSS Grid & Flexbox
-- ES6 JavaScript
-- LocalStorage API
+### 🚀 **Fast**
+- No dependencies to install
+- No build step
+- Instant loading
 
----
+### 📦 **Portable**
+- Works offline
+- Works anywhere
+- No server required (can run locally)
 
-## 📊 Performance
-
-- ⚡ **Lighthouse Score**: 95+
-- 📦 **Total Size**: < 100 KB (without videos)
-- 🚀 **Load Time**: < 2 seconds on 3G
-- 📱 **Mobile Friendly**: 100%
+### 🔧 **Maintainable**
+- All HTML in one place
+- All CSS in one file
+- All JS in one file
 
 ---
 
-## 🛠️ Development
+## 📖 Documentation
 
-### Testing Locally
-
-1. **Check JavaScript syntax**
-   ```bash
-   node --check simple-script.js
-   ```
-
-2. **Validate HTML**
-   - Use [W3C Validator](https://validator.w3.org/)
-   - Or install: `npm install -g html-validator-cli`
-
-3. **Test responsiveness**
-   - Open DevTools (F12)
-   - Toggle device toolbar (Ctrl+Shift+M)
-   - Test different screen sizes
-
-### Code Style
-
-- **Indentation**: 2 spaces
-- **Quotes**: Single quotes for JS, double for HTML
-- **Semicolons**: Always in JavaScript
-- **Comments**: Descriptive section headers
+- **STRUCTURE.md** - Detailed folder structure
+- **docs/FEATURES.md** - Complete feature list
+- **docs/DEMO_GUIDE.md** - Step-by-step testing
+- **docs/IMPLEMENTATION_STATUS.md** - What's implemented
 
 ---
-
-## ✅ Changelog (cleanup)
-
-- Removed the dark-mode toggle and persistent theme code to simplify the UI and CSS.
-- Moved inline styles into `styles.css` and removed stray tags from `index.html`.
-- Removed save/bookmark persistence and related JavaScript to reduce complexity.
-- Simplified `toast.css` and aligned it with the main styling variables.
-- Ensured `simple-script.js` passes syntax check and only contains handlers used by the current UI.
-
 
 ## 🤝 Contributing
 
-We welcome contributions! Here's how:
-
-1. **Fork the repository**
-2. **Create your feature branch**
-   ```bash
-   git checkout -b feature/AmazingFeature
-   ```
-3. **Commit your changes**
-   ```bash
-   git commit -m 'Add some AmazingFeature'
-   ```
-4. **Push to the branch**
-   ```bash
-   git push origin feature/AmazingFeature
-   ```
-5. **Open a Pull Request**
-
-### Ideas for Contributions
-
-- 🌍 Add regional language support (Hindi, Punjabi)
-- 📝 Create interactive quizzes
-- 📊 Add progress tracking
-- 🎮 Gamification elements
-- 📱 Progressive Web App features
+1. Fork the repository
+2. Edit `index.html`, `style.css`, or `script.js`
+3. Test locally
+4. Submit a pull request
 
 ---
 
-## 📝 License
+## 📄 License
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 👥 Authors
-
-- **Nabha Learning Team** - *Initial work*
+MIT License - Free to use and modify
 
 ---
 
-## 🙏 Acknowledgments
+## 💡 Tips
 
-- Font Awesome for icons
-- YouTube for video hosting
-- All educators creating free content
-- Rural students of Nabha for inspiration
+### Edit HTML
+- All pages are in `index.html`
+- Each page is a `<div id="page-name" class="page">`
+- Only one page shows at a time (class `active`)
 
----
+### Edit Styles
+- Everything is in `style.css`
+- Uses CSS variables for colors
+- Mobile-first responsive design
 
-## 📞 Contact & Support
-
-- 📧 Email: support@nabhalearn.org
-- 🌐 Website: [nabhalearn.org](https://nabhalearn.org)
-- 📱 Social Media: Follow @nabhalearn
-
----
-
-## 🗺️ Roadmap
-
-### Phase 1 (Current)
-- [x] Basic video library
-- [x] PDF downloads
-- [x] Dark mode
-- [x] Mobile responsive
-
-### Phase 2 (Planned)
-- [ ] User accounts
-- [ ] Progress tracking
-- [ ] Interactive quizzes
-- [ ] Regional languages
-
-### Phase 3 (Future)
-- [ ] Offline mode (PWA)
-- [ ] Live classes
-- [ ] Discussion forum
-- [ ] Mobile apps
+### Edit JavaScript
+- All functionality in `script.js`
+- Uses event delegation
+- No external libraries needed
 
 ---
 
-## 💡 FAQ
+## 🎊 Features Included
 
-**Q: Do I need a server to run this?**  
-A: No! Just open `index.html` in any browser.
-
-**Q: Can I customize the content?**  
-A: Yes! Edit the HTML to add your own videos and PDFs.
-
-**Q: Is this free to use?**  
-A: Absolutely! It's open-source under MIT license.
-
-**Q: Can I use this for my school?**  
-A: Yes! Feel free to adapt it for your needs.
-
-**Q: How do I add real PDF downloads?**  
-A: Host PDFs on your server and update the `data-filename` attributes with actual URLs.
+✅ Responsive navigation  
+✅ Hero section with search  
+✅ Feature cards  
+✅ Video library with filters  
+✅ Digital library downloads  
+✅ Mentor profiles  
+✅ Study group listings  
+✅ Contact form  
+✅ Toast notifications  
+✅ Mobile menu  
+✅ Smooth scrolling  
+✅ URL routing  
 
 ---
 
-## 🎯 Quick Reference
+## 📞 Support
 
-### Common Tasks
-
-| Task | File to Edit | Section |
-|------|-------------|---------|
-| Change site name | `index.html` | `<title>` and `.logo` |
-| Add video | `index.html` | Videos section |
-| Add book | `index.html` | Library section |
-| Change colors | `styles.css` | `:root` variables |
-| Modify behavior | `simple-script.js` | NabhaApp class |
+- **Email**: support@nabhalearn.org
+- **Location**: Nabha, Punjab, India
+- **Hours**: Monday - Saturday, 9 AM - 6 PM IST
 
 ---
 
-<div align="center">
+## 🌟 Status
 
-**Made with ❤️ for rural education in Nabha, Punjab**
+✅ **Production Ready**  
+✅ **Fully Functional**  
+✅ **Mobile Responsive**  
+✅ **Zero Dependencies**  
+✅ **Fast Loading**  
 
-⭐ Star us on GitHub if this helped you!
+---
 
-[Report Bug](https://github.com/mehulvish13/NABHA/issues) · [Request Feature](https://github.com/mehulvish13/NABHA/issues)
+**Made with ❤️ for students everywhere**
 
-</div>
+**Mindly - Learn. Grow. Shine.** 🎓
+
+---
+
+*Last Updated: October 15, 2025*
